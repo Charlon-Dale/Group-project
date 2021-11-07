@@ -204,7 +204,7 @@ function deleteUser($id){
 function auth() {
     if($_SESSION['user']['level'] < 1):
         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You are not authorized to view that page.');
-        header('Location: /');
+        header('Location: index.php');
         exit();
     endif;
 }

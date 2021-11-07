@@ -8,7 +8,7 @@
 ?>
 <?php
     $loggedInUser = selectSingleUser($_SESSION['user']['id']);
-    $welcome = 'Welcome, '.$loggedInUser['fname']. ' '.$loggedInUser['lname'].' (<a href="/logout">Logout</a>)';
+    $welcome = 'Welcome, '.$loggedInUser['fname']. ' '.$loggedInUser['lname'].' (<a href="logout.php">Logout</a>)';
 ?>
 <?php if(isset($_SESSION['message'])): ?>
     <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">
@@ -27,7 +27,7 @@
             <div class="col-md-11 text-right">
                 <nav>
                     <ul>
-                        <li><a href="/">Dashboard</a></li>
+                        <li><a href="index.php">Dashboard</a></li>
                         <?php if($_SESSION['user']['level'] >= 1) : ?>
                         <li><a href="create.php">New Employee</a></li>
                         <li><a href="users.php">Users</a></li>                 

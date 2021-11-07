@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `employees` (
   `lname` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=14;
 
 --
 -- Dumping data for table `employees`
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `active` int(11) NOT NULL DEFAULT '0',
   `level` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=8;
 
 --
 -- Dumping data for table `users`
