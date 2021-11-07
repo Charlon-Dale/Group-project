@@ -9,13 +9,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>DevDrawer DB</title>
+    <title>JUAN IT Dashboard</title>
     <?php include('theme/header-scripts.php'); ?>
 </head>
 <body>
     <?php include('theme/header.php'); ?>
     <div class="container-fluid">
-        <h1><em class="fa fa-check-circle"></em> Welcome to DevDrawer</h1>
+        <h1>User Dashboard</h1>
         <table class="table table-striped datatable">
             <thead>
                 <tr>

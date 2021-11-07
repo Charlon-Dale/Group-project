@@ -84,25 +84,6 @@ $(document).ready( function () {
         }]
     });
 
-    $('.users').DataTable({
-        ajax: '/includes/route.php?type=getUsers',
-        columns: [
-            { data: 'id'},
-            { data: 'active'},
-            { data: 'username'},
-            { data: 'fname'},
-            { data: 'lname'},
-            { data: 'id',
-                fnCreatedCell: function (td, id) {
-                    $(td).html('<div class="text-right"><a href="/updateUser.php?id='+id+'" title="Edit this record">Update</a> | <a href="/deleteUser.php?id='+id+'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a></div>');
-                }
-            }
-        ],
-        columnDefs: [ {
-            targets: [5],
-            orderable: false
-        }]
-    });
 
     $('.form').validate({
         rules: {
@@ -112,10 +93,35 @@ $(document).ready( function () {
             lastname: {
                 required:true
             },
+            birthday: {
+                required:true
+            },
+            course: {
+                required:true
+            },
+            email: {
+                required:true,
+                email:true
+            },
+            username: {
+                required:true
+            },
+            password: {
+                required:true,
+                minlength: 8
+            }
         },
         messages: {
             firstname: 'First Name is required',
             lastname: 'Last Name is required',
+            birthday: 'Birthday is required',
+            course: 'Course is required',
+            email: 'Email is required',
+            username: 'Username is required',
+            password: {
+                required: 'Password is required',
+                minlength: jQuery.validator.format('At least {0} characters required!')
+            }
         },
         errorClass: 'is-invalid text-danger',
         submitHandler: function(form) {
