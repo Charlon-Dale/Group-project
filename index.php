@@ -22,7 +22,9 @@
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Phone</th>
+                    <th>Birthday</th>
+                    <th>Course</th>
+                    <th>Email</th>
                     <?php echo $_SESSION['user'] ? '<th></th>' : ''; ?>
                 </tr>
             </thead>
@@ -32,11 +34,14 @@
                         echo'
                             <tr>
                                 <td>'.$student['Studentid'].'</td>
-                                <td>'.$student['fname'].'</td>
-                                <td>'.$student['lname'].'</td>
+                                <td>'.$student['Firstname'].'</td>
+                                <td>'.$student['LastName'].'</td>
+                                <td>'.$student['Birthday'].'</td>
+                                <td>'.$student['Course'].'</td>
+                                <td>'.$student['Email'].'</td>
                                 <td class="text-right">
-                                    <a href ="/update?id='.$student['Studentid'].'">Update</a>
-                                    <a href ="/delete?id='.$student['Studentid'].'">Delete</a>
+                                    <a href ="update.php?Studentid='.$student['Studentid'].'">Update</a>
+                                    <a href ="delete.php?Studentid='.$student['Studentid'].'">Delete</a>
                                 </td>
                             </tr>
                         '; 

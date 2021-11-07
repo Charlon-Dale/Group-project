@@ -1,6 +1,5 @@
 <?php
     include('includes/functions.php');
-    auth();
     if(isset($_POST['btnCreateUser'])):
         $username = $_POST['username'];
         $password = $_POST['password'];

@@ -1,6 +1,5 @@
 <?php
     include('includes/functions.php');
-    auth();
     if (isset($_POST['btnInsert'])) :
         createUser($_POST['Firstname'], $_POST['LastName'], $_POST['Birthday']);
     endif;

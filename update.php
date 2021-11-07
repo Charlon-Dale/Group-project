@@ -1,8 +1,8 @@
 <?php
     include('includes/functions.php');
-    auth();
+    // auth();
     if (isset($_POST['btnUpdate'])) :
-        updateUser($_POST['Firstname'], $_POST['LastName'], $_POST['phone'], $_POST['Studentid']);
+        updateUser($_POST['Username'], $_POST['Firstname'], $_POST['LastName'], $_POST['Studentid']);
     endif;
     $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
 ?>
@@ -21,16 +21,18 @@
         <?php if ($user != false) : ?>
             <h1><em class="fa fa-pen-square"></em> Update</h1>
             <form action="" method="post" class="form">
-                <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
+                <input type="hidden" name="Studentid" value="<?php echo $user['Studentid']; ?>">
+                <label for="Username">Username</label>
+                <input type="text" name="Username" id="Username" class="form-control" value="<?php echo $user['Username']; ?>">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="Firstname">First Name</label>
-                        <input type="text" name="Firstname" id="Firstname" class="form-control" value="<?php echo $user['Firstname']; ?>">
+                        <label for="firstname">First Name</label>
+                        <input type="text" name="firstname" id="firstname" class="form-control" value="<?php echo $user['Firstname']; ?>">
                         <br>
                     </div>
                     <div class="col-md-6">
-                        <label for="LastName">Last Name</label>
-                        <input type="text" name="LastName" id="LastName" class="form-control" value="<?php echo $user['LastName']; ?>">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" name="lastName" id="lastName" class="form-control" value="<?php echo $user['LastName']; ?>">
                         <br>
                     </div>
                 </div>

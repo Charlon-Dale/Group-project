@@ -1,6 +1,5 @@
 <?php
     include('includes/functions.php');
-    auth();
     if(isset($_POST['btnUpdateUser'])):
         $username = $_POST['username'];
         $fname = $_POST['fname'];

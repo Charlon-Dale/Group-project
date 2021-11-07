@@ -1,6 +1,5 @@
 <?php session_start();
 
-//error_reporting(E_ALL);
 require_once('db.php');
 
 /* format arrays */
@@ -28,56 +27,6 @@ function selectAll(){
     return $data;
 }
 
-// /* select single statement */
-// function selectSingle($id = NULL) {
-//     global $mysqli;
-//     $stmt = $mysqli->prepare('SELECT * FROM Students WHERE id = ?');
-//     $stmt->bind_param('i', $id);
-//     $stmt->execute();
-//     $result = $stmt->get_result();
-//     $row = $result->fetch_assoc();
-//     $stmt->close();
-//     return $row;
-// }
-
-/* insert statement */
-// function insert($Username = NULL, $Password = NULL, $Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL){
-//     global $mysqli;
-//     $stmt = $mysqli->prepare('INSERT INTO employees (fname, lname, phone) VALUES (?, ?, ?)');
-//     $stmt->bind_param('sss', $fname, $lname, $phone);
-//     $stmt->execute();
-//     $stmt->close();
-//     $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully added a new employee');
-//     header('Location: update.php?id='.$mysqli->insert_id);
-//     exit();
-// }
-
-// /* update statement */
-// function update($fname = NULL, $lname = NULL, $phone = NULL, $id){
-//     global $mysqli;
-//     $stmt = $mysqli->prepare('UPDATE employees SET fname = ?, lname = ?, phone = ? WHERE id =?');
-//     $stmt->bind_param('sssi', $fname, $lname, $phone, $id);
-//     $stmt->execute();
-//     if($stmt->affected_rows === 0):
-//         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You did not make any changes');
-//     else:
-//         $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully update the selected employee');
-//     endif;
-//     $stmt->close();
-// }
-
-// /* delete statement */
-// function delete($id){
-//     global $mysqli;
-//     $stmt = $mysqli->prepare('DELETE FROM employees WHERE id =?');
-//     $stmt->bind_param('i', $id);
-//     $stmt->execute();
-//     $stmt->close();
-//     $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully deleted the selected employee');
-//     header('Location:index.php');
-//     exit();
-// }
-
 /* login statement */
 function doLogin($Username = NULL, $Password = NULL) {
     global $mysqli;
@@ -85,18 +34,18 @@ function doLogin($Username = NULL, $Password = NULL) {
     $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();
-    while($row = $result->fetch_assoc()){
-        $hash = $row['password'];
-        if(password_verify($Password, $hash)):
-            $_SESSION['user']['Studentid'] = $row['Studentid'];
-            $_SESSION['user']['Firstname'] = $row['Firstname'];
-            $_SESSION['user']['LastName'] = $row['LastName'];
-            $_SESSION['user']['Username'] = $row['Username'];
+    if($result->num_rows === 0):
+        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Account does not exist');
+    else:
+        $row = $result->fetch_assoc();
+        if(password_verify($Password, $row['Password'])):
+            $_SESSION['user'] = $row;
+            $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully logged in');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your Username or password is incorrect. Please try again.');
+            $_SESSION['message'] = array('type'=>'danger', 'msg'=>'our username or password is incorrect. Please try again.');
         endif;
-    }
+    endif;
     $stmt->close();
 }
 
@@ -160,6 +109,7 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
             Username, 
             password) VALUES(?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('sssssss', $Firstname, $LastName, $Birthday, $Course, $Email, $Username, $password);
+        var_dump($stmt);
         $stmt->execute();
         $stmt->close();
         if(isset($_SESSION['user'])) :
@@ -197,13 +147,4 @@ function deleteUser($Studentid){
     $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully deleted the selected user');
     header('Location:users.php');
     exit();
-}
-
-/* validate use can access pages */
-function auth() {
-    if($_SESSION['user']):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You are not authorized to view that page.');
-        header('Location: index.php');
-        exit();
-    endif;
 }

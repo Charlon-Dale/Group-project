@@ -11,9 +11,9 @@
               LastName varchar(30)NOT NULL,
               Birthday date NOT NULL,
               Course varchar(30) NOT NULL,
-	          Email varchar(30)NOT NULL,
+	          Email varchar(255)NOT NULL,
 	          Username varchar(30)NOT NULL,
-              Password varchar(30)NOT NULL,
+              Password varchar(255)NOT NULL,
 	          PRIMARY KEY(Studentid))
              ";
 	$mysqli->query($table);

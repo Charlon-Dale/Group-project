@@ -1,4 +1,3 @@
 <?php
 include('includes/functions.php');
-auth();
-$user = (isset($_GET['id'])) ? delete($_GET['id']) : exit();
+$user = (isset($_GET['Studentid'])) ? deleteUser($_GET['Studentid']) : exit();
