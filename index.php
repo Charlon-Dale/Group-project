@@ -26,6 +26,25 @@
                     <?php echo $_SESSION['user']['level'] >= 1 ? '<th></th>' : ''; ?>
                 </tr>
             </thead>
+            <tbody>
+                <?php
+                    foreach ($allEmployees as $employee):
+                        echo'
+                            <tr>
+                                <td>'.$employee['id'].'</td>
+                                <td>'.$employee['fname'].'</td>
+                                <td>'.$employee['lname'].'</td>
+                                <td>'.$employee['phone'].'</td>
+                                <td class="text-right">
+                                    
+                                    <a href ="update.php?id='.$employee['id'].'. php">Update</a>
+                                    <a href ="delete.php?id='.$employee['id'].'. php">Delete</a>
+                                </td>
+                            </tr>
+                        '; 
+                    endforeach;    
+                ?>
+            </tbody>
         </table>
     </div>
     <?php include('theme/footer-scripts.php'); ?>
