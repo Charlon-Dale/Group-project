@@ -10,98 +10,93 @@ function formatcode($arr){
     echo '</pre>';
 }
 
-/* select statement */
-function selectAll(){
-    global $mysqli;
-    $data = array();
-    $stmt = $mysqli->prepare('SELECT * FROM employees');
-    $stmt->execute();
-    $result = $stmt->get_result();
-    if($result->num_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'There are currently no records in the database');
-    else:
-        while($row = $result->fetch_assoc()){
-            $data[] = $row;
-        }
-    endif;
-    $stmt->close();
-    return $data;
-}
+// /* select statement */
+// function selectAll(){
+//     global $mysqli;
+//     $data = array();
+//     $stmt = $mysqli->prepare('SELECT * FROM Students');
+//     $stmt->execute();
+//     $result = $stmt->get_result();
+//     if($result->num_rows === 0):
+//         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'There are currently no records in the database');
+//     else:
+//         while($row = $result->fetch_assoc()){
+//             $data[] = $row;
+//         }
+//     endif;
+//     $stmt->close();
+//     return $data;
+// }
 
-/* select single statement */
-function selectSingle($id = NULL) {
-    global $mysqli;
-    $stmt = $mysqli->prepare('SELECT * FROM employees WHERE id = ?');
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
-    $stmt->close();
-    return $row;
-}
+// /* select single statement */
+// function selectSingle($id = NULL) {
+//     global $mysqli;
+//     $stmt = $mysqli->prepare('SELECT * FROM Students WHERE id = ?');
+//     $stmt->bind_param('i', $id);
+//     $stmt->execute();
+//     $result = $stmt->get_result();
+//     $row = $result->fetch_assoc();
+//     $stmt->close();
+//     return $row;
+// }
 
-/* insert statement */
-function insert($fname = NULL, $lname = NULL, $phone = NULL){
-    global $mysqli;
-    $stmt = $mysqli->prepare('INSERT INTO employees (fname, lname, phone) VALUES (?, ?, ?)');
-    $stmt->bind_param('sss', $fname, $lname, $phone);
-    $stmt->execute();
-    $stmt->close();
-    $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully added a new employee');
-    header('Location: update.php?id='.$mysqli->insert_id);
-    exit();
-}
+// /* insert statement */
+// function insert($fname = NULL, $lname = NULL, $phone = NULL){
+//     global $mysqli;
+//     $stmt = $mysqli->prepare('INSERT INTO employees (fname, lname, phone) VALUES (?, ?, ?)');
+//     $stmt->bind_param('sss', $fname, $lname, $phone);
+//     $stmt->execute();
+//     $stmt->close();
+//     $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully added a new employee');
+//     header('Location: update.php?id='.$mysqli->insert_id);
+//     exit();
+// }
 
-/* update statement */
-function update($fname = NULL, $lname = NULL, $phone = NULL, $id){
-    global $mysqli;
-    $stmt = $mysqli->prepare('UPDATE employees SET fname = ?, lname = ?, phone = ? WHERE id =?');
-    $stmt->bind_param('sssi', $fname, $lname, $phone, $id);
-    $stmt->execute();
-    if($stmt->affected_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You did not make any changes');
-    else:
-        $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully update the selected employee');
-    endif;
-    $stmt->close();
-}
+// /* update statement */
+// function update($fname = NULL, $lname = NULL, $phone = NULL, $id){
+//     global $mysqli;
+//     $stmt = $mysqli->prepare('UPDATE employees SET fname = ?, lname = ?, phone = ? WHERE id =?');
+//     $stmt->bind_param('sssi', $fname, $lname, $phone, $id);
+//     $stmt->execute();
+//     if($stmt->affected_rows === 0):
+//         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You did not make any changes');
+//     else:
+//         $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully update the selected employee');
+//     endif;
+//     $stmt->close();
+// }
 
-/* delete statement */
-function delete($id){
-    global $mysqli;
-    $stmt = $mysqli->prepare('DELETE FROM employees WHERE id =?');
-    $stmt->bind_param('i', $id);
-    $stmt->execute();
-    $stmt->close();
-    $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully deleted the selected employee');
-    header('Location:index.php');
-    exit();
-}
+// /* delete statement */
+// function delete($id){
+//     global $mysqli;
+//     $stmt = $mysqli->prepare('DELETE FROM employees WHERE id =?');
+//     $stmt->bind_param('i', $id);
+//     $stmt->execute();
+//     $stmt->close();
+//     $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully deleted the selected employee');
+//     header('Location:index.php');
+//     exit();
+// }
 
 /* login statement */
-function doLogin($username = NULL, $password = NULL) {
+function doLogin($Username = NULL, $password = NULL) {
     global $mysqli;
-    $stmt = $mysqli->prepare('SELECT * FROM users WHERE username = ? AND active = 1');
-    $stmt->bind_param('s', $username);
+    $stmt = $mysqli->prepare('SELECT * FROM users WHERE Username = ?');
+    $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();
-    if($result->num_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your account has not been enabled. Please contact an administrator.');
-    else:
-        while($row = $result->fetch_assoc()){
-            $hash = $row['password'];
-            if(password_verify($password, $hash)):
-                $_SESSION['user']['id'] = $row['id'];
-                $_SESSION['user']['fname'] = $row['fname'];
-                $_SESSION['user']['lname'] = $row['lname'];
-                $_SESSION['user']['username'] = $row['username'];
-                $_SESSION['user']['level'] = $row['level'];
-                header('Location:index.php');
-            else:
-                $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your username or password is incorrect. Please try again.');
-            endif;
-        }
-    endif;
+    while($row = $result->fetch_assoc()){
+        $hash = $row['password'];
+        if(password_verify($password, $hash)):
+            $_SESSION['user']['Studentid'] = $row['Studentid'];
+            $_SESSION['user']['Firstname'] = $row['Firstname'];
+            $_SESSION['user']['LastName'] = $row['LastName'];
+            $_SESSION['user']['Username'] = $row['Username'];
+            header('Location:index.php');
+        else:
+            $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your Username or password is incorrect. Please try again.');
+        endif;
+    }
     $stmt->close();
 }
 
@@ -113,8 +108,8 @@ function doLogout(){
     exit();
 }
 
-/* select all users */
-function selectAllUsers() {
+/* select all Students */
+function selectAllStudents() {
     global $mysqli;
     $data = array();
     $stmt = $mysqli->prepare('SELECT * FROM users');
@@ -132,10 +127,10 @@ function selectAllUsers() {
 }
 
 /* select single statement */
-function selectSingleUser($id = NULL) {
+function selectSingleUser($Studentid = NULL) {
     global $mysqli;
-    $stmt = $mysqli->prepare('SELECT * FROM users WHERE id = ?');
-    $stmt->bind_param('i', $id);
+    $stmt = $mysqli->prepare('SELECT * FROM users WHERE Studentid = ?');
+    $stmt->bind_param('i', $Studentid);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -144,23 +139,30 @@ function selectSingleUser($id = NULL) {
 }
 
 /* create user statement */
-function createUser($username = NULL, $password = NULL, $fname = NULL, $lname = NULL, $active = 0, $level = 0) {
+function createUser($Username = NULL, $Password = NULL, $Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL) {
     global $mysqli;
 
-    $stmt = $mysqli->prepare('SELECT * FROM users WHERE username = ?');
+    $stmt = $mysqli->prepare('SELECT * FROM users WHERE Username = ?');
 
-    $stmt->bind_param('s', $username);
+    $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();
 
     if($result->num_rows !== 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'The username you chose is taken. Please try again.');
+        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'The Username you chose is taken. Please try again.');
     else:
-
         echo 1;
-        $password = password_hash($password, PASSWORD_DEFAULT);
-        $stmt = $mysqli->prepare("INSERT INTO users (username, password, fname, lname, active, level) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssssii', $username, $password, $fname, $lname, $active, $level);
+        $password = password_hash($Password, PASSWORD_DEFAULT);
+        $stmt = $mysqli->prepare("INSERT INTO users (
+            Username,
+            password,
+            Firstname,
+            LastName,
+            Birthday,
+            Course,
+            Email
+        ) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('ssssiii', $Username, $password, $Firstname, $LastName, $Birthday, $Course, $Email);
         $stmt->execute();
         $stmt->close();
         if(isset($_SESSION['user'])) :
@@ -175,10 +177,10 @@ function createUser($username = NULL, $password = NULL, $fname = NULL, $lname = 
 }
 
 /* update user statement */
-function updateUser($username, $fname = NULL, $lname = NULL, $active, $level, $id){
+function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Studentid){
     global $mysqli;
-    $stmt = $mysqli->prepare('UPDATE users SET username = ?, fname = ?, lname = ?, active = ?, level = ? WHERE id =?');
-    $stmt->bind_param('sssiii', $username, $fname, $lname, $active, $level, $id);
+    $stmt = $mysqli->prepare('UPDATE users SET Username = ?, Firstname = ?, LastName = ? WHERE Studentid =?');
+    $stmt->bind_param('sssi', $Username, $Firstname, $LastName, $Studentid);
     $stmt->execute();
     if($stmt->affected_rows === 0):
         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You did not make any changes');
@@ -189,10 +191,10 @@ function updateUser($username, $fname = NULL, $lname = NULL, $active, $level, $i
 }
 
 /* delete user statement */
-function deleteUser($id){
+function deleteUser($Studentid){
     global $mysqli;
-    $stmt = $mysqli->prepare('DELETE FROM users WHERE id =?');
-    $stmt->bind_param('i', $id);
+    $stmt = $mysqli->prepare('DELETE FROM users WHERE Studentid =?');
+    $stmt->bind_param('i', $Studentid);
     $stmt->execute();
     $stmt->close();
     $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully deleted the selected user');
@@ -202,7 +204,7 @@ function deleteUser($id){
 
 /* validate use can access pages */
 function auth() {
-    if($_SESSION['user']['level'] < 1):
+    if($_SESSION['user']):
         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You are not authorized to view that page.');
         header('Location: index.php');
         exit();

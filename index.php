@@ -1,7 +1,7 @@
 <?php
 
     include('includes/functions.php');
-    $allEmployees = selectAll();
+    $listAllStudents = selectAllStudents();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,16 +28,16 @@
             </thead>
             <tbody>
                 <?php
-                    foreach ($allEmployees as $employee):
+                    foreach ($listAllStudents as $student):
                         echo'
                             <tr>
-                                <td>'.$employee['id'].'</td>
-                                <td>'.$employee['fname'].'</td>
-                                <td>'.$employee['lname'].'</td>
-                                <td>'.$employee['phone'].'</td>
+                                <td>'.$student['id'].'</td>
+                                <td>'.$student['fname'].'</td>
+                                <td>'.$student['lname'].'</td>
+                                <td>'.$student['phone'].'</td>
                                 <td class="text-right">
-                                    <a href ="/update?id='.$employee['id'].'">Update</a>
-                                    <a href ="/delete?id='.$employee['id'].'">Delete</a>
+                                    <a href ="/update?id='.$student['id'].'">Update</a>
+                                    <a href ="/delete?id='.$student['id'].'">Delete</a>
                                 </td>
                             </tr>
                         '; 

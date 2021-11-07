@@ -6,7 +6,7 @@
     $db->query("CREATE DATABASE IF NOT EXISTS `StudentAccount`");
     mysqli_select_db($db,"StudentAccount");
  
-	$table = "CREATE TABLE IF NOT EXISTS Students (Studentid int(11) NOT NULL auto_increment,   
+	$table = "CREATE TABLE IF NOT EXISTS users (Studentid int(11) NOT NULL auto_increment,   
 	          Firstname varchar(30)NOT NULL,
               LastName varchar(30)NOT NULL,
               Birthday date NOT NULL,
@@ -17,11 +17,11 @@
 	          PRIMARY KEY(Studentid))
              ";
 	$db->query($table);
-    $sql="SELECT * FROM Students ";  
+    $sql="SELECT * FROM users ";  
     $result=mysqli_query($db,$sql);
     $count=mysqli_num_rows($result);            
        if($count==0) {
-            $enter="INSERT INTO Students (
+            $enter="INSERT INTO users (
                 Firstname, 
                 LastName, 
                 Birthday, 
