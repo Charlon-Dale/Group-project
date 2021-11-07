@@ -10,23 +10,23 @@ function formatcode($arr){
     echo '</pre>';
 }
 
-// /* select statement */
-// function selectAll(){
-//     global $mysqli;
-//     $data = array();
-//     $stmt = $mysqli->prepare('SELECT * FROM Students');
-//     $stmt->execute();
-//     $result = $stmt->get_result();
-//     if($result->num_rows === 0):
-//         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'There are currently no records in the database');
-//     else:
-//         while($row = $result->fetch_assoc()){
-//             $data[] = $row;
-//         }
-//     endif;
-//     $stmt->close();
-//     return $data;
-// }
+/* select statement */
+function selectAll(){
+    global $mysqli;
+    $data = array();
+    $stmt = $mysqli->prepare('SELECT * FROM Students');
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows === 0):
+        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'There are currently no records in the database');
+    else:
+        while($row = $result->fetch_assoc()){
+            $data[] = $row;
+        }
+    endif;
+    $stmt->close();
+    return $data;
+}
 
 // /* select single statement */
 // function selectSingle($id = NULL) {
@@ -40,8 +40,8 @@ function formatcode($arr){
 //     return $row;
 // }
 
-// /* insert statement */
-// function insert($fname = NULL, $lname = NULL, $phone = NULL){
+/* insert statement */
+// function insert($Username = NULL, $Password = NULL, $Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL){
 //     global $mysqli;
 //     $stmt = $mysqli->prepare('INSERT INTO employees (fname, lname, phone) VALUES (?, ?, ?)');
 //     $stmt->bind_param('sss', $fname, $lname, $phone);
@@ -79,7 +79,7 @@ function formatcode($arr){
 // }
 
 /* login statement */
-function doLogin($Username = NULL, $password = NULL) {
+function doLogin($Username = NULL, $Password = NULL) {
     global $mysqli;
     $stmt = $mysqli->prepare('SELECT * FROM users WHERE Username = ?');
     $stmt->bind_param('s', $Username);
@@ -87,7 +87,7 @@ function doLogin($Username = NULL, $password = NULL) {
     $result = $stmt->get_result();
     while($row = $result->fetch_assoc()){
         $hash = $row['password'];
-        if(password_verify($password, $hash)):
+        if(password_verify($Password, $hash)):
             $_SESSION['user']['Studentid'] = $row['Studentid'];
             $_SESSION['user']['Firstname'] = $row['Firstname'];
             $_SESSION['user']['LastName'] = $row['LastName'];
@@ -139,9 +139,8 @@ function selectSingleUser($Studentid = NULL) {
 }
 
 /* create user statement */
-function createUser($Username = NULL, $Password = NULL, $Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL) {
+function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL, $Username = NULL, $Password = NULL) {
     global $mysqli;
-
     $stmt = $mysqli->prepare('SELECT * FROM users WHERE Username = ?');
 
     $stmt->bind_param('s', $Username);
@@ -151,18 +150,16 @@ function createUser($Username = NULL, $Password = NULL, $Firstname = NULL, $Last
     if($result->num_rows !== 0):
         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'The Username you chose is taken. Please try again.');
     else:
-        echo 1;
         $password = password_hash($Password, PASSWORD_DEFAULT);
         $stmt = $mysqli->prepare("INSERT INTO users (
-            Username,
-            password,
-            Firstname,
-            LastName,
-            Birthday,
-            Course,
-            Email
-        ) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param('ssssiii', $Username, $password, $Firstname, $LastName, $Birthday, $Course, $Email);
+            Firstname, 
+            LastName, 
+            Birthday, 
+            Course, 
+            Email, 
+            Username, 
+            password) VALUES(?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param('sssssss', $Firstname, $LastName, $Birthday, $Course, $Email, $Username, $password);
         $stmt->execute();
         $stmt->close();
         if(isset($_SESSION['user'])) :

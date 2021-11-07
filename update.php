@@ -2,9 +2,9 @@
     include('includes/functions.php');
     auth();
     if (isset($_POST['btnUpdate'])) :
-        update($_POST['fname'], $_POST['lname'], $_POST['phone'], $_POST['id']);
+        updateUser($_POST['Firstname'], $_POST['LastName'], $_POST['phone'], $_POST['Studentid']);
     endif;
-    $user = (isset($_GET['id'])) ? selectSingle($_GET['id']) : false;
+    $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -24,20 +24,13 @@
                 <input type="hidden" name="id" value="<?php echo $user['id']; ?>">
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="fname">First Name</label>
-                        <input type="text" name="fname" id="fname" class="form-control" value="<?php echo $user['fname']; ?>">
+                        <label for="Firstname">First Name</label>
+                        <input type="text" name="Firstname" id="Firstname" class="form-control" value="<?php echo $user['Firstname']; ?>">
                         <br>
                     </div>
                     <div class="col-md-6">
-                        <label for="lname">Last Name</label>
-                        <input type="text" name="lname" id="lname" class="form-control" value="<?php echo $user['lname']; ?>">
-                        <br>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="phone">Phone</label>
-                        <input type="text" name="phone" id="phone" class="form-control phone" value="<?php echo $user['phone']; ?>">
+                        <label for="LastName">Last Name</label>
+                        <input type="text" name="LastName" id="LastName" class="form-control" value="<?php echo $user['LastName']; ?>">
                         <br>
                     </div>
                 </div>

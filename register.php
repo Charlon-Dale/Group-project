@@ -1,11 +1,14 @@
 <?php
     include('includes/functions.php');
     if(isset($_POST['btnRegister'])):
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        createUser($username, $password, $fname, $lname);
+        $Firstname = $_POST['firstname'];
+        $LastName = $_POST['lastname'];
+        $Birthday = $_POST['birthday'];
+        $Course = $_POST['course'];
+        $Email = $_POST['email'];
+        $Username = $_POST['username'];
+        $Password = $_POST['password'];
+        createUser($Firstname, $LastName, $Birthday, $Course, $Email, $Username, $Password);
     endif;
 ?>
 <!DOCTYPE html>
@@ -31,16 +34,29 @@
                 <form action="" method="post" class="register">
                     <div class="row">
                         <div class="col-md-6">
-                            <label for="fname">First Name</label>
-                            <input type="text" name="fname" id="fname" class="form-control">
+                            <label for="firstname">First Name</label>
+                            <input type="text" name="firstname" id="firstname" class="form-control">
                             <br>
                         </div>
                         <div class="col-md-6">
-                            <label for="lname">Last Name</label>
-                            <input type="text" name="lname" id="lname" class="form-control">
+                            <label for="lastname">Last Name</label>
+                            <input type="text" name="lastname" id="lastname" class="form-control">
+                            <br>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="birthday">Birthday</label>
+                            <input type="date" name="birthday" id="birthday" class="form-control">
+                            <br>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="course">Course</label>
+                            <input type="text" name="course" id="course" class="form-control">
                             <br>
                         </div>
                     </div>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" class="form-control">
+                    <br>
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" class="form-control">
                     <br>

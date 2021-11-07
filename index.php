@@ -16,14 +16,14 @@
     <?php include('theme/header.php'); ?>
     <div class="container-fluid">
         <h1><em class="fa fa-check-circle"></em> Welcome to DevDrawer</h1>
-        <table class="table table-striped <?php echo $_SESSION['user']['level'] >= 1 ? 'datatable' : 'datatableSimple'; ?>">
+        <table class="table table-striped datatable">
             <thead>
                 <tr>
                     <th>ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Phone</th>
-                    <?php echo $_SESSION['user']['level'] >= 1 ? '<th></th>' : ''; ?>
+                    <?php echo $_SESSION['user'] ? '<th></th>' : ''; ?>
                 </tr>
             </thead>
             <tbody>
@@ -31,13 +31,12 @@
                     foreach ($listAllStudents as $student):
                         echo'
                             <tr>
-                                <td>'.$student['id'].'</td>
+                                <td>'.$student['Studentid'].'</td>
                                 <td>'.$student['fname'].'</td>
                                 <td>'.$student['lname'].'</td>
-                                <td>'.$student['phone'].'</td>
                                 <td class="text-right">
-                                    <a href ="/update?id='.$student['id'].'">Update</a>
-                                    <a href ="/delete?id='.$student['id'].'">Delete</a>
+                                    <a href ="/update?id='.$student['Studentid'].'">Update</a>
+                                    <a href ="/delete?id='.$student['Studentid'].'">Delete</a>
                                 </td>
                             </tr>
                         '; 

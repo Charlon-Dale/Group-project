@@ -3,9 +3,9 @@
     include('includes/functions.php');
 
     if(isset($_POST['btnLogin'])):
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        doLogin($username, $password);
+        $Username = $_POST['username'];
+        $Password = $_POST['password'];
+        doLogin($Username, $Password);
     endif;
 ?>
 <!DOCTYPE html>
@@ -29,7 +29,7 @@
             <div class="container-fluid">
                 <h1>Login</h1>
                 <form action="" method="post" class="login">
-                    <label for="username">Username</label>
+                    <label for="Username">Username</label>
                     <input type="text" name="username" id="username" class="form-control">
                     <br>
                     <label for="password">Password</label>

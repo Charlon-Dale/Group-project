@@ -9,8 +9,8 @@ $(document).ready( function () {
             }
         },
         messages: {
-            username: 'A username is required',
-            password: 'A password name is required'
+            username: 'Username is required',
+            password: 'Password is required'
         },
         errorClass: 'is-invalid text-danger',
         submitHandler: function(form) {
@@ -20,11 +20,21 @@ $(document).ready( function () {
 
     $('.register').validate({
         rules: {
-            fname: {
+            firstname: {
                 required:true
             },
-            lname: {
+            lastname: {
                 required:true
+            },
+            birthday: {
+                required:true
+            },
+            course: {
+                required:true
+            },
+            email: {
+                required:true,
+                email:true
             },
             username: {
                 required:true
@@ -35,11 +45,14 @@ $(document).ready( function () {
             }
         },
         messages: {
-            fname: 'A first name is required',
-            lname: 'A last name is required',
-            username: 'A username is required',
+            firstname: 'First Name is required',
+            lastname: 'Last Name is required',
+            birthday: 'Birthday is required',
+            course: 'Course is required',
+            email: 'Email is required',
+            username: 'Username is required',
             password: {
-                required: 'A password is required',
+                required: 'Password is required',
                 minlength: jQuery.validator.format('At least {0} characters required!')
             }
         },
@@ -52,13 +65,12 @@ $(document).ready( function () {
     $('.datatable').DataTable({
         ajax: '/includes/route.php?type=get',
         columns: [
-            { data: 'id'},
+            { data: 'Studentid'},
             { data: 'fname'},
             { data: 'lname'},
-            { data: 'phone'},
-            { data: 'id',
-                fnCreatedCell: function (td, id) {
-                    $(td).html('<div class="text-right"><a href="/update.php?id='+id+'" title="Edit this record">Update</a> | <a href="/delete.php?id='+id+'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a></div>');
+            { data: 'Studentid',
+                fnCreatedCell: function (td, Studentid) {
+                    $(td).html('<div class="text-right"><a href="/update.php?Studentid='+Studentid+'" title="Edit this record">Update</a> | <a href="/delete.php?Studentid='+Studentid+'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a></div>');
                 }
             }
         ],
@@ -66,16 +78,6 @@ $(document).ready( function () {
             targets: [4],
             orderable: false
         }]
-    });
-
-    $('.datatableSimple').DataTable({
-        ajax: '/includes/route.php?type=get',
-        columns: [
-            { data: 'id'},
-            { data: 'fname'},
-            { data: 'lname'},
-            { data: 'phone'}
-        ]
     });
 
     $('.users').DataTable({
@@ -98,28 +100,18 @@ $(document).ready( function () {
         }]
     });
 
-    $('.phone').mask('000-000-0000');
-
     $('.form').validate({
         rules: {
-            fname: {
+            firstname: {
                 required:true
             },
-            lname: {
+            lastname: {
                 required:true
             },
-            phone: {
-                required:true,
-                minlength: 12
-            }
         },
         messages: {
-            fname: 'A first name is required',
-            lname: 'A last name is required',
-            phone: {
-                required: 'A phone number is required',
-                minlength: jQuery.validator.format('At least {0} characters required!')
-            }
+            firstname: 'First Name is required',
+            lastname: 'Last Name is required',
         },
         errorClass: 'is-invalid text-danger',
         submitHandler: function(form) {
