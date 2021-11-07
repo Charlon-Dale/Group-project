@@ -36,9 +36,8 @@
                                 <td>'.$employee['lname'].'</td>
                                 <td>'.$employee['phone'].'</td>
                                 <td class="text-right">
-                                    
-                                    <a href ="update.php?id='.$employee['id'].'. php">Update</a>
-                                    <a href ="delete.php?id='.$employee['id'].'. php">Delete</a>
+                                    <a href ="/update?id='.$employee['id'].'">Update</a>
+                                    <a href ="/delete?id='.$employee['id'].'">Delete</a>
                                 </td>
                             </tr>
                         '; 
