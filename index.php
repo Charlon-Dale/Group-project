@@ -19,7 +19,8 @@
         <table class="table table-striped datatable">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Studentid ID</th>
+                    <th>Username</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Birthday</th>
@@ -34,6 +35,7 @@
                         echo'
                             <tr>
                                 <td>'.$student['Studentid'].'</td>
+                                <td>'.$student['Username'].'</td>
                                 <td>'.$student['Firstname'].'</td>
                                 <td>'.$student['LastName'].'</td>
                                 <td>'.$student['Birthday'].'</td>

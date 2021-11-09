@@ -116,7 +116,7 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
             $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully added a new user');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'success', 'msg'=>'You have successfully create a new user, once approved you can log in here.');
+            $_SESSION['message'] = array('type'=>'success', 'msg'=>'You have successfully create a new user, you can log in here.');
             header('Location:login.php');
         endif;
         exit();
@@ -133,7 +133,6 @@ function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Studentid){
         $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You did not make any changes');
     else:
         $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully update the selected user');
-        header('Location:index.php');
     endif;
     $stmt->close();
 }
