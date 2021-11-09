@@ -23,7 +23,7 @@
                 <nav>
                     <ul>
                         <li><a href="index.php">Dashboard</a></li>
-                        <li><a href="addUser.php">Add New Students</a></li>
+                        <li><a href="addUser.php">Add New User</a></li>
                         <li><strong><?php echo $welcome; ?></strong></li>
                     </ul>
                 </nav>

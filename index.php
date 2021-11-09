@@ -16,7 +16,7 @@
     <?php include('theme/header.php'); ?>
     <div class="container-fluid">
         <h1>User Dashboard</h1>
-        <table class="table table-striped datatable">
+        <table class=" table table-striped">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -28,26 +28,26 @@
                     <?php echo $_SESSION['user'] ? '<th></th>' : ''; ?>
                 </tr>
             </thead>
-            <tbody>
-                <?php
-                    foreach ($listAllStudents as $student):
-                        echo'
-                            <tr>
-                                <td>'.$student['Studentid'].'</td>
-                                <td>'.$student['Firstname'].'</td>
-                                <td>'.$student['LastName'].'</td>
-                                <td>'.$student['Birthday'].'</td>
-                                <td>'.$student['Course'].'</td>
-                                <td>'.$student['Email'].'</td>
-                                <td class="text-right">
-                                    <a href ="update.php?Studentid='.$student['Studentid'].'">Update</a>
-                                    <a href ="delete.php?Studentid='.$student['Studentid'].'">Delete</a>
-                                </td>
-                            </tr>
-                        '; 
-                    endforeach;    
-                ?>
-            </tbody>
+                <tbody>
+                    <?php
+                        foreach ($listAllStudents as $student):
+                            echo'
+                                <tr>
+                                    <td>'.$student['Studentid'].'</td>
+                                    <td>'.$student['Firstname'].'</td>
+                                    <td>'.$student['LastName'].'</td>
+                                    <td>'.$student['Birthday'].'</td>
+                                    <td>'.$student['Course'].'</td>
+                                    <td>'.$student['Email'].'</td>
+                                    <td class="text-right">
+                                        <a href ="update.php?Studentid='.$student['Studentid'].'" title="Edit this record">Update</a> |
+                                        <a href ="delete.php?Studentid='.$student['Studentid'].'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a>
+                                    </td>
+                                </tr>
+                            '; 
+                        endforeach;    
+                    ?>
+                </tbody>
         </table>
     </div>
     <?php include('theme/footer-scripts.php'); ?>

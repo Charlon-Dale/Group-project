@@ -43,7 +43,7 @@ function doLogin($Username = NULL, $Password = NULL) {
             $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully logged in');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'danger', 'msg'=>'our username or password is incorrect. Please try again.');
+            $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your username or password is incorrect. Please try again.');
         endif;
     endif;
     $stmt->close();
@@ -126,7 +126,7 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
 /* update user statement */
 function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Studentid){
     global $mysqli;
-    $stmt = $mysqli->prepare('UPDATE users SET Username = ?, Firstname = ?, LastName = ? WHERE Studentid =?');
+    $stmt = $mysqli->prepare('UPDATE users SET Username = ?, Firstname = ?, LastName = ? WHERE Studentid = ?');
     $stmt->bind_param('sssi', $Username, $Firstname, $LastName, $Studentid);
     $stmt->execute();
     if($stmt->affected_rows === 0):

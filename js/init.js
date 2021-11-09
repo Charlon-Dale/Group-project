@@ -79,7 +79,7 @@ $(document).ready( function () {
             }
         ],
         columnDefs: [ {
-            targets: [4],
+            targets: [6],
             orderable: false
         }]
     });
@@ -87,45 +87,26 @@ $(document).ready( function () {
 
     $('.form').validate({
         rules: {
-            firstname: {
-                required:true
-            },
-            lastname: {
-                required:true
-            },
-            birthday: {
-                required:true
-            },
-            course: {
-                required:true
-            },
-            email: {
-                required:true,
-                email:true
-            },
             username: {
                 required:true
             },
-            password: {
-                required:true,
-                minlength: 8
-            }
+            firstname: {
+                required:true
+            },
+            lastName: {
+                required:true
+            },
         },
         messages: {
-            firstname: 'First Name is required',
-            lastname: 'Last Name is required',
-            birthday: 'Birthday is required',
-            course: 'Course is required',
-            email: 'Email is required',
             username: 'Username is required',
-            password: {
-                required: 'Password is required',
-                minlength: jQuery.validator.format('At least {0} characters required!')
-            }
+            firstname: 'First Name is required',
+            lastName: 'Last Name is required',
+            
         },
         errorClass: 'is-invalid text-danger',
         submitHandler: function(form) {
             form.submit();
         }
+        
     });
 } );
