@@ -39,7 +39,7 @@
                         <br>
                     </div>
                 </div>
-                <button name="btnUpdate" class="btn btn-primary">Update Record</button>
+                <button name="btnUpdateUser" class="btn btn-primary">Update Record</button>
             </form>   
         <?php else: ?>  
             <h1>User is not set. Try again.</h1>

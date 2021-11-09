@@ -66,6 +66,7 @@ $(document).ready( function () {
         ajax: '/includes/route.php?type=get',
         columns: [
             { data: 'Studentid'},
+            { data: 'Username'},
             { data: 'Firstname'},
             { data: 'LastName'},
             { data: 'Birthday'},

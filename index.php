@@ -19,7 +19,8 @@
         <table class=" table table-striped">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>Studentid ID</th>
+                    <th>Username</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Birthday</th>
@@ -28,6 +29,7 @@
                     <?php echo $_SESSION['user'] ? '<th></th>' : ''; ?>
                 </tr>
             </thead>
+<<<<<<< HEAD
                 <tbody>
                     <?php
                         foreach ($listAllStudents as $student):
@@ -48,6 +50,29 @@
                         endforeach;    
                     ?>
                 </tbody>
+=======
+            <tbody>
+                <?php
+                    foreach ($listAllStudents as $student):
+                        echo'
+                            <tr>
+                                <td>'.$student['Studentid'].'</td>
+                                <td>'.$student['Username'].'</td>
+                                <td>'.$student['Firstname'].'</td>
+                                <td>'.$student['LastName'].'</td>
+                                <td>'.$student['Birthday'].'</td>
+                                <td>'.$student['Course'].'</td>
+                                <td>'.$student['Email'].'</td>
+                                <td class="text-right">
+                                    <a href ="update.php?Studentid='.$student['Studentid'].'">Update</a>
+                                    <a href ="delete.php?Studentid='.$student['Studentid'].'">Delete</a>
+                                </td>
+                            </tr>
+                        '; 
+                    endforeach;    
+                ?>
+            </tbody>
+>>>>>>> c73fec6534b04f79c6c0677ae44cc3b431a1f6e6
         </table>
     </div>
     <?php include('theme/footer-scripts.php'); ?>
