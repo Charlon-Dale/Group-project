@@ -20,10 +20,10 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-11 text-right">
-                <nav>
+                <nav style="font-size: 20px;">
                     <ul>
                         <li><a href="index.php">Dashboard</a></li>
-                        <li><a href="addUser.php">Add New User</a></li>
+                        <li><a href="addUser.php">Add New Student</a></li>
                         <li><strong><?php echo $welcome; ?></strong></li>
                     </ul>
                 </nav>

@@ -85,24 +85,48 @@ $(document).ready( function () {
         }]
     });
 
+    // $('.form').validate({
+    //     clearInput()
+    
+    // });
 
     $('.form').validate({
         rules: {
-            username: {
-                required:true
-            },
             firstname: {
                 required:true
             },
-            lastName: {
+            lastname: {
                 required:true
             },
+            birthday: {
+                required:true
+            },
+            course: {
+                required:true
+            },
+            email: {
+                required:true,
+                email:true
+            },
+            username: {
+                required:true
+            },
+            password: {
+                required:true,
+                minlength: 8
+            }
         },
         messages: {
-            username: 'Username is required',
             firstname: 'First Name is required',
-            lastName: 'Last Name is required',
-            
+            lastname: 'Last Name is required',
+            birthday: 'Birthday is required',
+            course: 'Course is required',
+            email: 'Email is required',
+            username: 'Username is required',
+            password: {
+                required: 'Password is required',
+                minlength: jQuery.validator.format('At least {0} characters required!')
+            }
         },
         errorClass: 'is-invalid text-danger',
         submitHandler: function(form) {
@@ -110,4 +134,4 @@ $(document).ready( function () {
         }
         
     });
-} );
+});

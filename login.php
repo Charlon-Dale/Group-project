@@ -35,9 +35,11 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" class="form-control">
                     <br>
-                    <button name="btnLogin" class="btn btn-primary">Login</button> <a href="register.php">Register</a>
+                    <button name="btnLogin" class="btn btn-primary">Login</button> <a href="register.php" style="font-size: 20px;">Register</a>
                 </form>
             </div>
+            <div class="curve"></div>
     <?php include('theme/footer-scripts.php'); ?>
 </body>
+
 </html>
