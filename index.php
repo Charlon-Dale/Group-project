@@ -16,7 +16,7 @@
     <?php include('theme/header.php'); ?>
     <div class="container-fluid">
         <h1>User Dashboard</h1>
-        <table class="table table-striped datatable">
+        <table class=" table table-striped">
             <thead>
                 <tr>
                     <th>Studentid ID</th>
@@ -42,8 +42,9 @@
                                 <td>'.$student['Course'].'</td>
                                 <td>'.$student['Email'].'</td>
                                 <td class="text-right">
-                                    <a href ="update.php?Studentid='.$student['Studentid'].'">Update</a>
-                                    <a href ="delete.php?Studentid='.$student['Studentid'].'">Delete</a>
+                                    <a href ="update.php?Studentid='.$student['Studentid'].'" title="Update this record" >Update</a> |
+                                    <a href ="delete.php?Studentid='.$student['Studentid'].'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a>
+
                                 </td>
                             </tr>
                         '; 

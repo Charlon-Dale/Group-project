@@ -1,6 +1,6 @@
 <?php
 	$mysqli = new mysqli("localhost","root","");
-	if($mysqli->connect_errno > 0){
+	if($mysqli->connect_error > 0){
         die('Unable to connect to database [' . $mysqli->connect_error . ']');  
     }
     $mysqli->query("CREATE DATABASE IF NOT EXISTS `StudentAccount`");

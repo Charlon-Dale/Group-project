@@ -11,6 +11,18 @@
         createUser($Firstname, $LastName, $Birthday, $Course, $Email, $Username, $Password);
     endif;
 ?>
+<!-- to clear inputfields-->
+<script type="text/javascript">
+    function clearInput() {
+        document.getElementById("firstname").value = "";
+        document.getElementById("lastname").value = "";
+        document.getElementById("birthday").value = "";
+        document.getElementById("course").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+</script> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +75,11 @@
                     <label for="password">Password</label>
                     <input type="password" name="password" id="password" class="form-control">
                     <br>
-                    <button name="btnRegister" class="btn btn-primary">Register</button> <a href="login.php">Cancel</a>
+                    <button name="btnRegister" class="btn btn-primary">Register</button>
+                    <button name="btnClear" class="btn btn-primary" id="clear" onclick="clearInput()">Clear</button>
+                    <div style="text-align:center">
+                    <a href="login.php" style="display:inline-block" class="cancel">Back to login</a> 
+                    </div>
                 </form>
             </div>
     <?php include('theme/footer-scripts.php'); ?>

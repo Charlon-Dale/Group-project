@@ -11,6 +11,20 @@
         createUser($Firstname, $LastName, $Birthday, $Course, $Email, $Username, $Password);
     endif;
 ?>
+
+<!-- to clear inputfields-->
+<script type="text/javascript">
+    function clearInput() {
+        document.getElementById("firstname").value = "";
+        document.getElementById("lastname").value = "";
+        document.getElementById("birthday").value = "";
+        document.getElementById("course").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("username").value = "";
+        document.getElementById("password").value = "";
+    }
+</script> 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,35 +42,36 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="firstname">First Name</label>
-                    <input type="text" name="firstname" id="firstname" class="form-control">
+                    <input type="text" name="firstname" id="firstname" title="Place your first name" class="form-control">
                     <br>
                 </div>
                 <div class="col-md-6">
                     <label for="lastname">Last Name</label>
-                    <input type="text" name="lastname" id="lastname" class="form-control">
+                    <input type="text" name="lastname" id="lastname" title="Place your last name" class="form-control">
                     <br>
                 </div>
                 <div class="col-md-6">
                     <label for="birthday">Birthday</label>
-                    <input type="date" name="birthday" id="birthday" class="form-control">
+                    <input type="date" name="birthday" id="birthday"  title="Press the calendar button" class="form-control">
                     <br>
                 </div>
                 <div class="col-md-6">
                     <label for="course">Course</label>
-                    <input type="text" name="course" id="course" class="form-control">
+                    <input type="text" name="course" id="course" title="Place your course in college" class="form-control">
                     <br>
                 </div>
             </div>
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control">
+            <input type="email" name="email" id="email" title="Your email should have an @ symbol " class="form-control">
             <br>
             <label for="username">Username</label>
-            <input type="text" name="username" id="username" class="form-control">
+            <input type="text" name="username" id="username" title="Please limit the the characters" class="form-control">
             <br>
             <label for="password">Password</label>
-            <input type="password" name="password" id="password" class="form-control">
+            <input type="password" name="password" id="password" title="minimum character required: 8" class="form-control">
             <br>
-            <button name="btnInsert" class="btn btn-primary">Insert Record</button>
+            <button name="btnInsert" class="btn btn-primary">Add Record</button>
+            <button name="btnClear" class="btn btn-primary" id="clear1" onclick="clearInput()">Clear</button>
         </form>  
     </div>
     <?php include('theme/footer-scripts.php'); ?>  

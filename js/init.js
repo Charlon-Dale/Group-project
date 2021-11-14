@@ -80,11 +80,15 @@ $(document).ready( function () {
             }
         ],
         columnDefs: [ {
-            targets: [4],
+            targets: [6],
             orderable: false
         }]
     });
 
+    // $('.form').validate({
+    //     clearInput()
+    
+    // });
 
     $('.form').validate({
         rules: {
@@ -128,5 +132,6 @@ $(document).ready( function () {
         submitHandler: function(form) {
             form.submit();
         }
+        
     });
-} );
+});
