@@ -109,7 +109,6 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
             Username, 
             password) VALUES(?, ?, ?, ?, ?, ?, ?)");
         $stmt->bind_param('sssssss', $Firstname, $LastName, $Birthday, $Course, $Email, $Username, $password);
-        var_dump($stmt);
         $stmt->execute();
         $stmt->close();
         if(isset($_SESSION['user'])) :
