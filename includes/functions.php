@@ -91,7 +91,6 @@ function selectSingleUser($Studentid = NULL) {
 function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL, $Username = NULL, $Password = NULL) {
     global $mysqli;
     $stmt = $mysqli->prepare('SELECT * FROM users WHERE Username = ?');
-
     $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();
