@@ -85,11 +85,6 @@ $(document).ready( function () {
         }]
     });
 
-    // $('.form').validate({
-    //     clearInput()
-    
-    // });
-
     $('.form').validate({
         rules: {
             firstname: {
