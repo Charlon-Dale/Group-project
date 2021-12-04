@@ -12,7 +12,7 @@ $(document).ready( function () {
             username: 'Username is required',
             password: 'Password is required'
         },
-        errorClass: 'is-invalid text-danger',
+        errorClass: 'border-red-500 text-xs italic text-red-500',
         submitHandler: function(form) {
             form.submit();
         }
@@ -56,7 +56,7 @@ $(document).ready( function () {
                 minlength: jQuery.validator.format('At least {0} characters required!')
             }
         },
-        errorClass: 'is-invalid text-danger',
+        errorClass: 'border-red-500 text-xs italic text-red-500',
         submitHandler: function(form) {
             form.submit();
         }
@@ -123,7 +123,7 @@ $(document).ready( function () {
                 minlength: jQuery.validator.format('At least {0} characters required!')
             }
         },
-        errorClass: 'is-invalid text-danger',
+        errorClass: 'border-red-500 text-xs italic text-red-500',
         submitHandler: function(form) {
             form.submit();
         }

@@ -11,18 +11,6 @@
         createUser($Firstname, $LastName, $Birthday, $Course, $Email, $Username, $Password);
     endif;
 ?>
-<!-- to clear inputfields-->
-<script type="text/javascript">
-    function clearInput() {
-        document.getElementById("firstname").value = "";
-        document.getElementById("lastname").value = "";
-        document.getElementById("birthday").value = "";
-        document.getElementById("course").value = "";
-        document.getElementById("email").value = "";
-        document.getElementById("username").value = "";
-        document.getElementById("password").value = "";
-    }
-</script> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,56 +20,136 @@
     <title>Register</title>
     <?php include('theme/header-scripts.php'); ?>
 </head>
-<body>
+<body class="font-mono bg-blue-300">
     <?php if(isset($_SESSION['message'])): ?>
         <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">
             <?php echo $_SESSION['message']['msg']; ?>
         </div>
         <?php unset($_SESSION['message']); ?>
     <?php endif; ?> 
-    <div class="card">
-        <div class="card-body">
-            <div class="container-fluid">
-                <h1>Register</h1>
-                <form action="" method="post" class="register">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <label for="firstname">First Name</label>
-                            <input type="text" name="firstname" id="firstname" class="form-control">
-                            <br>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="lastname">Last Name</label>
-                            <input type="text" name="lastname" id="lastname" class="form-control">
-                            <br>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="birthday">Birthday</label>
-                            <input type="date" name="birthday" id="birthday" class="form-control">
-                            <br>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="course">Course</label>
-                            <input type="text" name="course" id="course" class="form-control">
-                            <br>
-                        </div>
-                    </div>
-                    <label for="email">Email</label>
-                    <input type="email" name="email" id="email" class="form-control">
-                    <br>
-                    <label for="username">Username</label>
-                    <input type="text" name="username" id="username" class="form-control">
-                    <br>
-                    <label for="password">Password</label>
-                    <input type="password" name="password" id="password" class="form-control">
-                    <br>
-                    <button name="btnRegister" class="btn btn-primary">Register</button>
-                    <button name="btnClear" class="btn btn-primary" id="clear" onclick="clearInput()">Clear</button>
-                    <div style="text-align:center">
-                    <a href="login.php" style="display:inline-block" class="cancel">Back to login</a> 
-                    </div>
-                </form>
-            </div>
+	<div class="container mx-auto">
+		<div class="flex justify-center px-6 my-12">
+			<!-- Row -->
+			<div class="w-full xl:w-3/4 lg:w-11/12 flex">
+				<!-- Col -->
+				<div
+					class="w-full h-auto bg-blue-400 hidden lg:block lg:w-5/12 bg-cover rounded-l-lg"
+					style="background-image: url(images/rtu.jpg)"
+				></div>
+				<!-- Col -->
+				<div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
+					<h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
+					<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded register" method="post">
+						<div class="mb-4 md:flex md:justify-between">
+							<div class="mb-4 md:mr-2 md:mb-0">
+								<label class="block mb-2 text-sm font-bold text-gray-700" for="firstName">
+									First Name
+								</label>
+								<input
+									class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+									id="firstName"
+                                    name="firstname"
+									type="text"
+									placeholder="First Name"
+								/>
+							</div>
+							<div class="md:ml-2">
+								<label class="block mb-2 text-sm font-bold text-gray-700" for="lastName">
+									Last Name
+								</label>
+								<input
+									class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+									id="lastName"
+									name="lastname"
+									type="text"
+									placeholder="Last Name"
+								/>
+							</div>
+						</div>
+						<div class="mb-4 md:flex md:justify-between">
+							<div class="mb-4 md:mr-2 md:mb-0">
+								<label class="block mb-2 text-sm font-bold text-gray-700" for="birthday">
+									Birthday
+								</label>
+								<input
+									class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+									id="birthday"
+                                       name="birthday"
+									type="date"	
+								/>
+							</div>
+							<div class="md:ml-2">
+								<label class="block mb-2 text-sm font-bold text-gray-700" for="email">
+									Email
+								</label>
+								<input
+									class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+									id="email"
+									name="email"
+									type="email"
+									placeholder="Email"
+								/>
+							</div>
+						</div>
+                        <div class="mb-4">
+							<label class="block mb-2 text-sm font-bold text-gray-700" for="course">
+                                Course
+							</label>
+							<input
+								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+								id="course"
+								name="course"
+								type="text"
+								placeholder="Course"
+							/>
+						</div>
+                        <div class="mb-4">
+							<label class="block mb-2 text-sm font-bold text-gray-700" for="username">
+								Username
+							</label>
+							<input
+								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+								id="username"
+								name="username"
+								type="text"
+								placeholder="Username"
+							/>
+						</div>
+						<div class="mb-4">
+							<label class="block mb-2 text-sm font-bold text-gray-700" for="password">
+								Password
+							</label>
+							<input
+								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:shadow-outline"
+								id="password"
+								name="password"
+								type="password"
+								placeholder="Password"
+							/>
+						</div>
+						<div class="mb-6 text-center">
+							<button
+								class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
+								type="submit"
+                                name="btnRegister"
+							>
+								Register Account
+							</button>
+						</div>
+						<hr class="mb-6 border-t" />
+						<div class="text-center">
+							<a
+								class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+								href="login.php"
+							>
+								Already have an account? Login!
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
     <?php include('theme/footer-scripts.php'); ?>
 </body>
 </html>
