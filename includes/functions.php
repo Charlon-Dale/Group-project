@@ -146,3 +146,4 @@ function deleteUser($Studentid){
     header('Location:index.php');
     exit();
 }
+
