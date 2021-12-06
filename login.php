@@ -42,11 +42,12 @@
 								Username
 							</label>
 							<input
-								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
 								id="username"
 								name="username"
 								type="text"
 								placeholder="Username"
+								autocomplete="off"
 							/>
 						</div>
 						<div class="mb-4">
@@ -54,7 +55,7 @@
 								Password
 							</label>
 							<input
-								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline"
+								class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
 								id="password"
 								name="password"
 								type="password"

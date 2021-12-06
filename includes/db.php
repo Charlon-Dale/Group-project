@@ -24,7 +24,7 @@
             $enter="INSERT INTO users (
                 Firstname, 
                 LastName, 
-                Birthday, 
+                Birthday, `
                 Course, 
                 Email, 
                 Username, 
