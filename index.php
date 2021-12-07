@@ -274,7 +274,7 @@
                     <th class="px-4 py-3">Student</th>
                     <th class="px-4 py-3">Username</th>
                     <th class="px-4 py-3">Status</th>
-                    <th class="px-4 py-3">Actions</th>
+                    <th class="px-4 py-3 text-center">Actions</th>
                   </tr>
                 </thead>
                 <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
@@ -298,7 +298,8 @@
                           <td class="px-4 py-3 text-xs">
                             <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100"> Approved </span>
                           </td>
-                          <td class="px-4 py-3 text-sm">
+                          <td class="px-4 py-3 text-sm text-center">
+                            <a class="inline-block text-sm text-green-500 align-baseline hover:text-green-800" href ="update.php?Studentid='.$student['Studentid'].'" title="view this record" >View</a> |
                             <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href ="update.php?Studentid='.$student['Studentid'].'" title="Update this record" >Update</a> |
                             <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a>
                           </td>
