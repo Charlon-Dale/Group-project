@@ -119,6 +119,9 @@
   .dark .dark\:hover\:text-blue-500:hover {
     color: rgba(59, 130, 246);
   }
+  .dark .dark\:focus\:ring-gray-600:focus {
+    --tw-ring-color:  rgba(75, 85, 99);
+  }
 
   /* Custom style */
   .header-right {
@@ -200,115 +203,115 @@
         </div>
         <!-- ./Statistics Cards -->
     
-        <!-- Student Table -->
+        <!-- Add Student -->
         <div class="mt-4 mx-4">
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="flex justify-center items-center">
-                <div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded">
-			    	<h3 class="pt-4 text-2xl text-center">Create an Account!</h3>
-			    	<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded register" method="post">
-			    		<div class="mb-4 md:flex md:justify-between">
-			    			<div class="mb-4 md:mr-2 md:mb-0">
-			    				<label class="block mb-2 text-sm font-bold text-gray-700" for="firstName">
-			    					First Name
-			    				</label>
-			    				<input
-			    					class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    					id="firstName"
-                                       name="firstname"
-			    					type="text"
-			    					placeholder="First Name"
-			    				/>
-			    			</div>
-			    			<div class="md:ml-2">
-			    				<label class="block mb-2 text-sm font-bold text-gray-700" for="lastName">
-			    					Last Name
-			    				</label>
-			    				<input
-			    					class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    					id="lastName"
-			    					name="lastname"
-			    					type="text"
-			    					placeholder="Last Name"
-			    				/>
-			    			</div>
-			    		</div>
-			    		<div class="mb-4 md:flex md:justify-between">
-			    			<div class="mb-4 md:mr-2 md:mb-0">
-			    				<label class="block mb-2 text-sm font-bold text-gray-700" for="birthday">
-			    					Birthday
-			    				</label>
-			    				<input
-			    					class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    					id="birthday"
-                                          name="birthday"
-			    					type="date"	
-			    				/>
-			    			</div>
-			    			<div class="md:ml-2">
-			    				<label class="block mb-2 text-sm font-bold text-gray-700" for="email">
-			    					Email
-			    				</label>
-			    				<input
-			    					class="w-full px-3 py-2 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    					id="email"
-			    					name="email"
-			    					type="email"
-			    					placeholder="Email"
-			    				/>
-			    			</div>
-			    		</div>
-                           <div class="mb-4">
-			    			<label class="block mb-2 text-sm font-bold text-gray-700" for="course">
-                                   Course
-			    			</label>
-			    			<input
-			    				class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    				id="course"
-			    				name="course"
-			    				type="text"
-			    				placeholder="Course"
-			    			/>
-			    		</div>
-                           <div class="mb-4">
-			    			<label class="block mb-2 text-sm font-bold text-gray-700" for="username">
-			    				Username
-			    			</label>
-			    			<input
-			    				class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    				id="username"
-			    				name="username"
-			    				type="text"
-			    				placeholder="Username"
-			    			/>
-			    		</div>
-			    		<div class="mb-4">
-			    			<label class="block mb-2 text-sm font-bold text-gray-700" for="password">
-			    				Password
-			    			</label>
-			    			<input
-			    				class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-700 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent"
-			    				id="password"
-			    				name="password"
-			    				type="password"
-			    				placeholder="Password"
-			    			/>
-			    		</div>
-			    		<div class="mb-6 text-center">
-			    			<button
-			    				class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
-			    				type="submit"
-                                   name="btnRegister"
-			    			>
-			    				Add Student
-			    			</button>
-			    		</div>
-			    	</form>
-			    </div>
+              <div class="w-full lg:w-7/12 bg-white dark:bg-gray-800 p-5 rounded-lg lg:rounded">
+			    	    <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">Add Student Account!</h3>
+			    	    <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded form" method="post">
+			    	    	<div class="mb-4 md:flex md:justify-between">
+			    	    		<div class="mb-4 md:mr-2 md:mb-0">
+			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="firstName">
+			    	    				First Name
+			    	    			</label>
+			    	    			<input
+			    	    				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    				id="firstName"
+                        name="firstname"
+			    	    				type="text"
+			    	    				placeholder="First Name"
+			    	    			/>
+			    	    		</div>
+			    	    		<div class="md:ml-2">
+			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="lastName">
+			    	    				Last Name
+			    	    			</label>
+			    	    			<input
+			    	    				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    				id="lastName"
+			    	    				name="lastname"
+			    	    				type="text"
+			    	    				placeholder="Last Name"
+			    	    			/>
+			    	    		</div>
+			    	    	</div>
+			    	    	<div class="mb-4 md:flex md:justify-between">
+			    	    		<div class="mb-4 md:mr-2 md:mb-0">
+			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="birthday">
+			    	    				Birthday
+			    	    			</label>
+			    	    			<input
+			    	    				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    				id="birthday"
+                        name="birthday"
+			    	    				type="date"	
+			    	    			/>
+			    	    		</div>
+			    	    		<div class="md:ml-2">
+			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="email">
+			    	    				Email
+			    	    			</label>
+			    	    			<input
+			    	    				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    				id="email"
+			    	    				name="email"
+			    	    				type="email"
+			    	    				placeholder="Email"
+			    	    			/>
+			    	    		</div>
+			    	    	</div>
+                  <div class="mb-4">
+			    	    		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="course">
+                     Course
+			    	    		</label>
+			    	    		<input
+			    	    			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    			id="course"
+			    	    			name="course"
+			    	    			type="text"
+			    	    			placeholder="Course"
+			    	    		/>
+			    	    	</div>
+                  <div class="mb-4">
+			    	    		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="username">
+			    	    			Username
+			    	    		</label>
+			    	    		<input
+			    	    			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    			id="username"
+			    	    			name="username"
+			    	    			type="text"
+			    	    			placeholder="Username"
+			    	    		/>
+			    	    	</div>
+			    	    	<div class="mb-4">
+			    	    		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="password">
+			    	    			Password
+			    	    		</label>
+			    	    		<input
+			    	    			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	    			id="password"
+			    	    			name="password"
+			    	    			type="password"
+			    	    			placeholder="Password"
+			    	    		/>
+			    	    	</div>
+			    	    	<div class="mb-6 text-center">
+			    	    		<button
+			    	    			class="w-full px-4 py-2 font-bold text-white bg-blue-500 dark:bg-gray-900 rounded-full hover:bg-blue-700 dark:hover:bg-gray-600 focus:outline-none focus:shadow-outline"
+			    	    			type="submit"
+                      name="btnInsert"
+			    	    		>
+			    	    			Add Student
+			    	    		</button>
+			    	    	</div>
+			    	    </form>
+			        </div>
             </div>
           </div>
         </div>
-        <!-- ./Student Table -->
+        <!-- ./Add Student -->
       </div>
     </div>
   </div>    
