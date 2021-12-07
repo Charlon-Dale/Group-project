@@ -17,7 +17,8 @@
     <?php include('components/header-scripts.php'); ?>
 </head>
 <body class="font-mono bg-blue-300">
-   
+   <!-- alert -->
+   <?php include('components/alert.php'); ?>
 	<!-- Container -->
 	<div class="container mx-auto">
 		<div class="flex justify-center px-6 my-12">

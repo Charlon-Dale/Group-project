@@ -17,7 +17,7 @@ function selectAll(){
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'There are currently no records in the database');
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>'There are currently no records in the database');
     else:
         while($row = $result->fetch_assoc()){
             $data[] = $row;
@@ -35,15 +35,15 @@ function doLogin($Username = NULL, $Password = NULL) {
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Account does not exist');
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>'Account does not exist');
     else:
         $row = $result->fetch_assoc();
         if(password_verify($Password, $row['Password'])):
             $_SESSION['user'] = $row;
-            $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully logged in');
+            $_SESSION['message'] = array('type'=>'green', 'msg'=>'Successfully logged in');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your username or password is incorrect. Please try again.');
+            $_SESSION['message'] = array('type'=>'red', 'msg'=>'Your username or password is incorrect. Please try again.');
         endif;
     endif;
     $stmt->close();
@@ -52,7 +52,7 @@ function doLogin($Username = NULL, $Password = NULL) {
 /* logout statement */
 function doLogout(){
     unset($_SESSION['user']);
-    $_SESSION['message'] = array('type'=>'success', 'msg'=>'Logged out successfully .');
+    $_SESSION['message'] = array('type'=>'green', 'msg'=>'Logged out successfully .');
     header('Location:login.php');
     exit();
 }
@@ -65,7 +65,7 @@ function selectAllStudents() {
     $stmt->execute();
     $result = $stmt->get_result();
     if($result->num_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'There are currently no records in the database');
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>'There are currently no records in the database');
     else:
         while($row = $result->fetch_assoc()){
             $data[] = $row;
@@ -96,7 +96,7 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
     $result = $stmt->get_result();
 
     if($result->num_rows !== 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>' Username you choose is taken. Please create another one.');
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>' Username you choose is taken. Please create another one.');
     else:
         $password = password_hash($Password, PASSWORD_DEFAULT);
         $stmt = $mysqli->prepare("INSERT INTO users (
@@ -111,10 +111,10 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
         $stmt->execute();
         $stmt->close();
         if(isset($_SESSION['user'])) :
-            $_SESSION['message'] = array('type'=>'success', 'msg'=>'Data saved successfully');
+            $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data saved successfully');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'success', 'msg'=>'Data created successfully, you may log in here.');
+            $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data created successfully, you may log in here.');
             header('Location:login.php');
         endif;
         exit();
@@ -128,9 +128,9 @@ function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Studentid){
     $stmt->bind_param('sssi', $Username, $Firstname, $LastName, $Studentid);
     $stmt->execute();
     if($stmt->affected_rows === 0):
-        $_SESSION['message'] = array('type'=>'danger', 'msg'=>'You did not make any changes');
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>'You did not make any changes');
     else:
-        $_SESSION['message'] = array('type'=>'success', 'msg'=>'Data updated successfully');
+        $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data updated successfully');
     endif;
     $stmt->close();
 }
@@ -142,7 +142,7 @@ function deleteUser($Studentid){
     $stmt->bind_param('i', $Studentid);
     $stmt->execute();
     $stmt->close();
-    $_SESSION['message'] = array('type'=>'success', 'msg'=>'Data deleted successfully');
+    $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data deleted successfully');
     header('Location:index.php');
     exit();
 }
