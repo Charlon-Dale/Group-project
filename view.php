@@ -1,7 +1,9 @@
 <?php
     include('includes/functions.php');
     $listAllStudents = selectAllStudents();
+    $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +19,6 @@
       <!-- Header -->
       <?php include('components/header-admin.php'); ?>
       <!-- ./Header -->
-    
       <!-- Sidebar -->
       <div class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
@@ -79,88 +80,117 @@
         </div>
         <!-- ./Statistics Cards -->
     
-        <!-- Student Table -->
+        <!-- Update Student -->
         <div class="mt-4 mx-4">
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-              <table class="w-full">
-                <thead>
-                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">Student ID</th>
-                    <th class="px-4 py-3">Student</th>
-                    <th class="px-4 py-3">Username</th>
-                    <th class="px-4 py-3 text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                  <?php
-                    foreach ($listAllStudents as $student):
-                      echo'
-                        <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                          <td class="px-4 py-3 text-xs">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                              '.$student['Studentid'].'
-                            </span>
-                          </td>
-                          <td class="px-4 py-3">
-                            <div class="flex items-center text-sm">
-                              <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                <img class="object-cover w-full h-full rounded-full" src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg" alt="" loading="lazy" />
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                              </div>
-                              <div>
-                                <p class="font-semibold">'.$student['Firstname'].' '.$student['LastName'].'</p>
-                                <p class="text-xs text-gray-600 dark:text-gray-400">'.$student['Course'].'</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-4 py-3 text-sm">'.$student['Username'].'</td>
-                          <td class="px-4 py-3 text-sm text-center">
-                            <a class="inline-block text-sm text-green-500 align-baseline hover:text-green-800" href ="view.php?Studentid='.$student['Studentid'].'" title="view this record" >View</a> |
-                            <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href ="update.php?Studentid='.$student['Studentid'].'" title="Update this record" >Update</a> |
-                            <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a>
-                          </td>
-                        </tr>
-                      ';  
-                    endforeach;  
-                  ?> 
-                </tbody>
-              </table>
-            </div>
-            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-              <span class="flex items-center col-span-3"> Created by Juan IT Group </span>
+            <div class="flex justify-center items-center">
+              <div class="w-full lg:w-7/12 bg-white dark:bg-gray-800 p-5 rounded-lg lg:rounded">
+                <?php if ($user != false) : ?>
+			    	      <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">Update Student Account!</h3>
+			    	      <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded form" method="post">
+                    <input type="hidden" name="Studentid" value="<?php echo $user['Studentid']; ?>">
+			    	      	<div class="mb-4 md:flex md:justify-between">
+			    	      		<div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
+			    	      			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="firstName">
+			    	      				First Name
+			    	      			</label>
+			    	      			<input
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				id="firstname"
+                          name="firstname"
+			    	      				type="text"
+                          value="<?php echo $user['Firstname']; ?>"
+			    	      				placeholder="First Name"
+			    	      			/>
+			    	      		</div>
+			    	      		<div class="w-full sm:w-1/2 sm:pl-2">
+			    	      			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="lastName">
+			    	      				Last Name
+			    	      			</label>
+			    	      			<input
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				id="lastname"
+			    	      				name="lastname"
+			    	      				type="text"
+                          value="<?php echo $user['LastName']; ?>"
+			    	      				placeholder="Last Name"
+			    	      			/>
+			    	      		</div>
+			    	      	</div>
+			    	      	<div class="mb-4 md:flex md:justify-between">
+			    	      		<div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
+			    	      			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="birthday">
+			    	      				Birthday
+			    	      			</label>
+			    	      			<input
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				id="birthday"
+                          name="birthday"
+                          value="<?php echo $user['Birthday']; ?>"
+			    	      				type="date"	
+			    	      			/>
+			    	      		</div>
+			    	      		<div class="w-full sm:w-1/2 sm:pl-2">
+			    	      			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="email">
+			    	      				Email
+			    	      			</label>
+			    	      			<input
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				id="email"
+			    	      				name="email"
+			    	      				type="email"
+                          value="<?php echo $user['Email']; ?>"
+			    	      				placeholder="Email"
+			    	      			/>
+			    	      		</div>
+			    	      	</div>
+                    <div class="mb-4">
+			    	      		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="course">
+                       Course
+			    	      		</label>
+			    	      		<input
+			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      			id="course"
+			    	      			name="course"
+			    	      			type="text"
+                        value="<?php echo $user['Course']; ?>"
+			    	      			placeholder="Course"
+			    	      		/>
+			    	      	</div>
+                    <div class="mb-4">
+			    	      		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="username">
+			    	      			Username
+			    	      		</label>
+			    	      		<input
+			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      			id="username"
+			    	      			name="username"
+			    	      			type="text"
+                        value="<?php echo $user['Username']; ?>"
+			    	      			placeholder="Username"
+			    	      		/>
+			    	      	</div>
+			    	      	<div class="mb-6 text-center">
+			    	      		<button
+			    	      			class="w-full px-4 py-2 font-bold text-white bg-blue-500 dark:bg-gray-900 rounded-full hover:bg-blue-700 dark:hover:bg-gray-600 focus:outline-none focus:shadow-outline"
+			    	      			type="submit"
+                        name="btnUpdateUser"
+			    	      		>
+			    	      			Update Student
+			    	      		</button>
+			    	      	</div>
+			    	      </form>
+                <?php else: ?>  
+                    <h1>User is not set. Try again.</h1>
+                <?php endif; ?> 
+			        </div>
             </div>
           </div>
         </div>
-        <!-- ./Student Table -->
+        <!-- ./Add Student -->
       </div>
     </div>
   </div>    
-
-  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
-  <script>
-    const setup = () => {
-      const getTheme = () => {
-        if (window.localStorage.getItem('dark')) {
-          return JSON.parse(window.localStorage.getItem('dark'))
-        }
-        return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
-      }
-
-      const setTheme = (value) => {
-        window.localStorage.setItem('dark', value)
-      }
-
-      return {
-        loading: true,
-        isDark: getTheme(),
-        toggleTheme() {
-          this.isDark = !this.isDark
-          setTheme(this.isDark)
-        },
-      }
-    }
-  </script>
+  <?php include('components/footer-scripts.php'); ?>  
 </body>
 </html>
-<!-- px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700 -->

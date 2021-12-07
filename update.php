@@ -10,8 +10,8 @@
       $Email = $_POST['email'];
       $Studentid = $_POST['Studentid'];
       updateUser($username, $firstname, $LastName,$Birthday,$Course,$Email, $Studentid);
-  endif;
-  $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
+    endif;
+    $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
 ?>
 
 <!DOCTYPE html>
