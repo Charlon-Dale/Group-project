@@ -49,6 +49,28 @@ function doLogin($Username = NULL, $Password = NULL) {
     $stmt->close();
 }
 
+/* login statement for admin */
+function doLoginAdmin($Username = NULL, $Password = NULL) {
+    global $mysqli;
+    $stmt = $mysqli->prepare('SELECT * FROM administrator WHERE Username = ?');
+    $stmt->bind_param('s', $Username);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    if($result->num_rows === 0):
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>'Account does not exist');
+    else:
+        $row = $result->fetch_assoc();
+        if(password_verify($Password, $row['Password'])):
+            $_SESSION['user'] = $row;
+            $_SESSION['message'] = array('type'=>'green', 'msg'=>'Successfully logged in');
+            header('Location:index.php');
+        else:
+            $_SESSION['message'] = array('type'=>'red', 'msg'=>'Your username or password is incorrect. Please try again');
+        endif;
+    endif;
+    $stmt->close();
+}
+
 /* logout statement */
 function doLogout(){
     unset($_SESSION['user']);
@@ -147,3 +169,11 @@ function deleteUser($Studentid){
     exit();
 }
 
+/* validate use can access pages */
+function isSuperUser() {
+    if($_SESSION['user']):
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>'You are not authorized to view that page.');
+        header('Location:index.php');
+        exit();
+    endif;
+}

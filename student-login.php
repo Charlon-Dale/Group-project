@@ -5,7 +5,7 @@
     if(isset($_POST['btnLogin'])):
         $Username = $_POST['username'];
         $Password = $_POST['password'];
-        doLoginAdmin($Username, $Password);
+        doLogin($Username, $Password);
     endif;
 ?>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login Admin</title>
+    <title>Login</title>
     <?php include('components/header-scripts.php'); ?>
 </head>
 <body class="font-mono bg-blue-300">
@@ -33,7 +33,7 @@
 				></div>
 				<!-- Col -->
 				<div class="w-full lg:w-7/12 bg-white p-5 rounded-lg lg:rounded-l-none">
-					<h3 class="pt-4 text-2xl text-center">Welcome back! Admin</h3>
+					<h3 class="pt-4 text-2xl text-center">Welcome back!</h3>
 					<form class="px-8 pt-6 pb-8 mb-4 bg-white rounded login" method="post">
 						<div class="mb-4">
 							<label class="block mb-2 text-sm font-bold text-gray-700" for="username">
@@ -68,6 +68,15 @@
 							>
 								Login
 							</button>
+						</div>
+						<hr class="mb-6 border-t" />
+						<div class="text-center">
+							<a
+								class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
+								href="register.php"
+							>
+								Don't have an account? Register!
+							</a>
 						</div>
 					</form>
 				</div>
