@@ -10,7 +10,7 @@
 ?>
 
 <!-- alert -->
-<?php /*include('components/alert.php'); */ ?>
+<?php include('components/alert.php'); ?>
 <!-- ./alert -->
 
 <div class="fixed w-full flex items-center justify-between h-14 text-white z-10">

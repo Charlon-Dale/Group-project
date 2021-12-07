@@ -156,10 +156,10 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
 }
 
 /* update user statement */
-function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Studentid){
+function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL, $Studentid){
     global $mysqli;
-    $stmt = $mysqli->prepare('UPDATE users SET Username = ?, Firstname = ?, LastName = ? WHERE Studentid = ?');
-    $stmt->bind_param('sssi', $Username, $Firstname, $LastName, $Studentid);
+    $stmt = $mysqli->prepare('UPDATE users SET Username = ?, Firstname = ?, LastName = ?, Birthday = ?, Course = ?, Email = ? WHERE Studentid = ?');
+    $stmt->bind_param('ssssssi', $Username, $Firstname, $LastName,$Birthday, $Course, $Email, $Studentid);
     $stmt->execute();
     if($stmt->affected_rows === 0):
         $_SESSION['message'] = array('type'=>'red', 'msg'=>'You did not make any changes');
