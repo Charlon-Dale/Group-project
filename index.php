@@ -11,47 +11,13 @@
     <title>JUAN IT Dashboard</title>
     <?php include('components/header-scripts.php'); ?>
 </head>
-
 <body>
-
-<div id="modal"
-    class="min-w-screen h-screen fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none transform scale-0 transition-transform duration-300">
-    <div class="absolute bg-black opacity-80 inset-0 z-0"></div>
-        <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
-          <!--content-->
-          <div class="">
-            <!--body-->
-            <div class="text-center p-5 flex-auto justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                </svg>
-                <h2 class="text-xl font-bold py-4 ">Are you sure?</h3>
-                <p class="text-sm text-gray-500 px-8">Do you really want to delete this account? This process cannot be undone</p>    
-            </div>
-            <!--footer-->
-            <div class="p-3  mt-2 text-center space-x-4 md:block">
-                <button 
-                    class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-                    id="closebutton"
-                >
-                    Cancel
-                </button>
-                <button class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">
-                    Delete
-                </button>
-            </div>
-          </div>
-        </div>
-</div>
-
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
       <!-- Header -->
       <?php include('components/header-admin.php'); ?>
       <!-- ./Header -->
+    
       <!-- Sidebar -->
       <div class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
@@ -150,9 +116,9 @@
                           </td>
                           <td class="px-4 py-3 text-sm">'.$student['Username'].'</td>
                           <td class="px-4 py-3 text-sm text-center">
-                            <a class="inline-block text-sm text-green-500 align-baseline hover:text-green-800" href ="#" title="view this record" id="buttonmodal">View</a> |
+                            <a class="inline-block text-sm text-green-500 align-baseline hover:text-green-800" href ="update.php?Studentid='.$student['Studentid'].'" title="view this record" >View</a> |
                             <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href ="update.php?Studentid='.$student['Studentid'].'" title="Update this record" >Update</a> |
-                            <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record">Delete</a>
+                            <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a>
                           </td>
                         </tr>
                       ';  
@@ -169,16 +135,32 @@
         <!-- ./Student Table -->
       </div>
     </div>
-  </div>
-  <script> 
-    const button = document.getElementById('buttonmodal')
-    const closebutton = document.getElementById('closebutton')
-    const modal = document.getElementById('modal')
+  </div>    
 
-    button.addEventListener('click',()=>modal.classList.add('scale-100'))
-    closebutton.addEventListener('click',()=>modal.classList.remove('scale-100'))
- </script>
-  <?php include('components/footer-scripts.php'); ?>    
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.0/dist/alpine.min.js" defer></script>
+  <script>
+    const setup = () => {
+      const getTheme = () => {
+        if (window.localStorage.getItem('dark')) {
+          return JSON.parse(window.localStorage.getItem('dark'))
+        }
+        return !!window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      }
+
+      const setTheme = (value) => {
+        window.localStorage.setItem('dark', value)
+      }
+
+      return {
+        loading: true,
+        isDark: getTheme(),
+        toggleTheme() {
+          this.isDark = !this.isDark
+          setTheme(this.isDark)
+        },
+      }
+    }
+  </script>
 </body>
 </html>
 <!-- px-2 py-1 font-semibold leading-tight text-red-700 bg-red-100 rounded-full dark:text-red-100 dark:bg-red-700 -->
