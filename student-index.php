@@ -11,7 +11,7 @@
     <title>JUAN IT Dashboard</title>
     <?php include('components/header-scripts.php'); ?>
 </head>
-<body>
+<body  x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
       <!-- Header -->
@@ -110,7 +110,7 @@
                           <td class="px-4 py-3 text-sm text-center">
                             <a class="inline-block text-sm text-green-500 align-baseline hover:text-green-800" href ="update.php?Studentid='.$student['Studentid'].'" title="view this record" >View</a> |
                             <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href ="update.php?Studentid='.$student['Studentid'].'" title="Update this record" >Update</a> |
-                            <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a>
+                            <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record" x-on:click="isModalOpen = true">Delete</a>
                           </td>
                         </tr>
                       ';  

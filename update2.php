@@ -1,50 +1,36 @@
-<?php
-    include('includes/functions.php');
-    if(isset($_POST['btnUpdateUser'])):
-        $username = $_POST['username'];
-        $firstname = $_POST['firstname'];
-        $LastName = $_POST['lastName'];
-        $Studentid = $_POST['Studentid'];
-        updateUser($username, $firstname, $LastName, $Studentid);
-    endif;
-    $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Update User</title>
-    <?php include('components/header-scripts.php'); ?>
-</head>
-<body>
-    <?php include('components/header.php'); ?>
-    <div class="container-fluid">
-        <?php if ($user != false) : ?>
-            <h1><em class="fa fa-pen-square"></em> Update</h1>
-            <form action="" method="post" class="form">
-                <input type="hidden" name="Studentid" value="<?php echo $user['Studentid']; ?>">
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-control" value="<?php echo $user['Username']; ?>">
-                <div class="row">
-                    <div class="col-md-6">
-                        <label for="firstname">First Name</label>
-                        <input type="text" name="firstname" id="firstname" class="form-control" value="<?php echo $user['Firstname']; ?>">
-                        <br>
-                    </div>
-                    <div class="col-md-6">
-                        <label for="lastName">Last Name</label>
-                        <input type="text" name="lastName" id="lastName" class="form-control" value="<?php echo $user['LastName']; ?>">
-                        <br>
-                    </div>
-                </div>
-                <button name="btnUpdateUser" class="btn btn-primary">Update Record</button>
-            </form>   
-        <?php else: ?>  
-            <h1>User is not set. Try again.</h1>
-        <?php endif; ?> 
+<?php if(isset($_SESSION['message'])): ?>
+    <div 
+        class="min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none "
+        id="modal"
+    >
+       	<div class="absolute bg-black opacity-80 inset-0 z-0"></div>
+        <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+          <!--content-->
+          <div class="">
+            <!--body-->
+            <div class="text-center p-5 flex-auto justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 flex items-center text-red-500 mx-auto" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+                <h2 class="text-xl font-bold py-4 ">Are you sure?</h3>
+                <p class="text-sm text-gray-500 px-8">Do you really want to delete this account? This process cannot be undone</p>    
+            </div>
+            <!--footer-->
+            <div class="p-3  mt-2 text-center space-x-4 md:block">
+                <button 
+                    class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+                    id="closebutton"
+                >
+                    Cancel
+                </button>
+                <button class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600">
+                    Delete
+                </button>
+            </div>
+          </div>
+        </div>
     </div>
-    <?php include('components/footer-scripts.php'); ?>
-</body>
-</html>
+<?php endif; ?>

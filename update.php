@@ -7,9 +7,9 @@
       $LastName = $_POST['lastname'];
       $Birthday = $_POST['birthday'];
       $Course = $_POST['course'];
-      $Course = $_POST['email'];
+      $Email = $_POST['email'];
       $Studentid = $_POST['Studentid'];
-      updateUser($username, $firstname, $LastName,$Birthday,$Course,$Course, $Studentid);
+      updateUser($username, $firstname, $LastName,$Birthday,$Course,$Email, $Studentid);
   endif;
   $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
 ?>
@@ -29,7 +29,6 @@
       <!-- Header -->
       <?php include('components/header-admin.php'); ?>
       <!-- ./Header -->
-    
       <!-- Sidebar -->
       <div class="fixed flex flex-col top-14 left-0 w-14 hover:w-64 md:w-64 bg-blue-900 dark:bg-gray-900 h-full text-white transition-all duration-300 border-none z-10 sidebar">
         <div class="overflow-y-auto overflow-x-hidden flex flex-col justify-between flex-grow">
@@ -106,7 +105,7 @@
 			    	      				First Name
 			    	      			</label>
 			    	      			<input
-			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      				id="firstname"
                           name="firstname"
 			    	      				type="text"
@@ -119,7 +118,7 @@
 			    	      				Last Name
 			    	      			</label>
 			    	      			<input
-			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      				id="lastname"
 			    	      				name="lastname"
 			    	      				type="text"
@@ -134,7 +133,7 @@
 			    	      				Birthday
 			    	      			</label>
 			    	      			<input
-			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      				id="birthday"
                           name="birthday"
                           value="<?php echo $user['Birthday']; ?>"
@@ -146,7 +145,7 @@
 			    	      				Email
 			    	      			</label>
 			    	      			<input
-			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      				id="email"
 			    	      				name="email"
 			    	      				type="email"
@@ -160,7 +159,7 @@
                        Course
 			    	      		</label>
 			    	      		<input
-			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      			id="course"
 			    	      			name="course"
 			    	      			type="text"
@@ -173,7 +172,7 @@
 			    	      			Username
 			    	      		</label>
 			    	      		<input
-			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 dark:text-gray-400 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
+			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      			id="username"
 			    	      			name="username"
 			    	      			type="text"

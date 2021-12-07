@@ -72,7 +72,7 @@ $(document).ready( function () {
             { data: 'Course'},
             { data: 'Studentid',
                 fnCreatedCell: function (td, Studentid) {
-                    $(td).html('<div class="text-right"><a href="update.php?Studentid='+Studentid+'" title="Edit this record">Update</a> | <a href="delete.php?Studentid='+Studentid+'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a></div>');
+                    $(td).html('<div class="text-right"><a href="update.php?Studentid='+Studentid+'" title="Edit this record">Update</a> | <a href="delete.php?Studentid='+Studentid+'" class="text-danger" title="Delete this record" @click="showModal = true">Delete</a></div>');
                 }
             }
         ],
