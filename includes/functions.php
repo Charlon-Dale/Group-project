@@ -43,7 +43,7 @@ function doLogin($Username = NULL, $Password = NULL) {
             $_SESSION['message'] = array('type'=>'green', 'msg'=>'Successfully logged in');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'red', 'msg'=>'Your username or password is incorrect. Please try again.');
+            $_SESSION['message'] = array('type'=>'red', 'msg'=>'Your username or password is incorrect. Please try again');
         endif;
     endif;
     $stmt->close();
@@ -52,7 +52,7 @@ function doLogin($Username = NULL, $Password = NULL) {
 /* logout statement */
 function doLogout(){
     unset($_SESSION['user']);
-    $_SESSION['message'] = array('type'=>'green', 'msg'=>'Logged out successfully .');
+    $_SESSION['message'] = array('type'=>'green', 'msg'=>'Logged out successfully');
     header('Location:login.php');
     exit();
 }
@@ -96,7 +96,7 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
     $result = $stmt->get_result();
 
     if($result->num_rows !== 0):
-        $_SESSION['message'] = array('type'=>'red', 'msg'=>' Username you choose is taken. Please create another one.');
+        $_SESSION['message'] = array('type'=>'red', 'msg'=>' Username you choose is taken');
     else:
         $password = password_hash($Password, PASSWORD_DEFAULT);
         $stmt = $mysqli->prepare("INSERT INTO users (
@@ -111,10 +111,10 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
         $stmt->execute();
         $stmt->close();
         if(isset($_SESSION['user'])) :
-            $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data saved successfully');
+            $_SESSION['message'] = array('type'=>'green', 'msg'=>'User saved successfully');
             header('Location:index.php');
         else:
-            $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data created successfully, you may log in here.');
+            $_SESSION['message'] = array('type'=>'green', 'msg'=>'User created successfully, you may log in here');
             header('Location:login.php');
         endif;
         exit();
@@ -130,7 +130,7 @@ function updateUser($Username, $Firstname = NULL, $LastName = NULL, $Studentid){
     if($stmt->affected_rows === 0):
         $_SESSION['message'] = array('type'=>'red', 'msg'=>'You did not make any changes');
     else:
-        $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data updated successfully');
+        $_SESSION['message'] = array('type'=>'green', 'msg'=>'User updated successfully');
     endif;
     $stmt->close();
 }
@@ -142,7 +142,7 @@ function deleteUser($Studentid){
     $stmt->bind_param('i', $Studentid);
     $stmt->execute();
     $stmt->close();
-    $_SESSION['message'] = array('type'=>'green', 'msg'=>'Data deleted successfully');
+    $_SESSION['message'] = array('type'=>'green', 'msg'=>'User deleted successfully');
     header('Location:index.php');
     exit();
 }
