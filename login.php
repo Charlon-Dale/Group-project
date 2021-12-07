@@ -17,12 +17,7 @@
     <?php include('components/header-scripts.php'); ?>
 </head>
 <body class="font-mono bg-blue-300">
-    <?php if(isset($_SESSION['message'])): ?>
-        <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">
-            <?php echo $_SESSION['message']['msg']; ?>
-        </div>
-        <?php unset($_SESSION['message']); ?>
-    <?php endif; ?> 
+   
 	<!-- Container -->
 	<div class="container mx-auto">
 		<div class="flex justify-center px-6 my-12">
