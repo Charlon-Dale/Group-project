@@ -211,7 +211,7 @@
 			    	    <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">Add Student Account!</h3>
 			    	    <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded form" method="post">
 			    	    	<div class="mb-4 md:flex md:justify-between">
-			    	    		<div class="mb-4 md:mr-2 md:mb-0">
+			    	    		<div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
 			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="firstName">
 			    	    				First Name
 			    	    			</label>
@@ -223,7 +223,7 @@
 			    	    				placeholder="First Name"
 			    	    			/>
 			    	    		</div>
-			    	    		<div class="md:ml-2">
+			    	    		<div class="w-full sm:w-1/2 sm:pl-2">
 			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="lastName">
 			    	    				Last Name
 			    	    			</label>
@@ -237,7 +237,7 @@
 			    	    		</div>
 			    	    	</div>
 			    	    	<div class="mb-4 md:flex md:justify-between">
-			    	    		<div class="mb-4 md:mr-2 md:mb-0">
+			    	    		<div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
 			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="birthday">
 			    	    				Birthday
 			    	    			</label>
@@ -248,7 +248,7 @@
 			    	    				type="date"	
 			    	    			/>
 			    	    		</div>
-			    	    		<div class="md:ml-2">
+			    	    		<div class="w-full sm:w-1/2 sm:pl-2">
 			    	    			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="email">
 			    	    				Email
 			    	    			</label>
@@ -297,15 +297,26 @@
 			    	    			placeholder="Password"
 			    	    		/>
 			    	    	</div>
-			    	    	<div class="mb-6 text-center">
-			    	    		<button
-			    	    			class="w-full px-4 py-2 font-bold text-white bg-blue-500 dark:bg-gray-900 rounded-full hover:bg-blue-700 dark:hover:bg-gray-600 focus:outline-none focus:shadow-outline"
-			    	    			type="submit"
-                      name="btnInsert"
-			    	    		>
-			    	    			Add Student
-			    	    		</button>
-			    	    	</div>
+                  <div class="flex flex-wrap justify-center">
+			    	    	  <div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
+			    	    	  	<button
+			    	    	  		class="w-full px-4 py-2 font-bold text-white bg-blue-500 dark:bg-gray-900 rounded-full hover:bg-blue-700 dark:hover:bg-gray-600 focus:outline-none focus:shadow-outline"
+			    	    	  		type="submit"
+                        name="btnInsert"
+			    	    	  	>
+			    	    	  		Add Student
+			    	    	  	</button>
+			    	    	  </div>
+                    <div class="w-full sm:w-1/2 sm:pl-2">
+			    	    	  	<button
+			    	    	  		class="w-full px-4 py-2 font-bold text-white bg-red-500 dark:bg-red-900 rounded-full hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:shadow-outline"
+			    	    	  		type="submit"
+                        name="btnInsert"
+			    	    	  	>
+			    	    	  		Clear
+			    	    	  	</button>
+			    	    	  </div>
+                  </div>
 			    	    </form>
 			        </div>
             </div>
