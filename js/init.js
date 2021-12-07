@@ -65,6 +65,7 @@ $(document).ready( function () {
     $('.datatable').DataTable({
         ajax: '/includes/route.php?type=get',
         columns: [
+            { data: 'Studentid'},
             { data: 'Username'},
             { data: 'Firstname'},
             { data: 'LastName'},
