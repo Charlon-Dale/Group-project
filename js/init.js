@@ -12,7 +12,7 @@ $(document).ready( function () {
             username: 'Username is required',
             password: 'Password is required'
         },
-        errorClass: 'is-invalid text-danger',
+        errorClass: 'border-red-500 text-xs italic text-red-500',
         submitHandler: function(form) {
             form.submit();
         }
@@ -56,7 +56,7 @@ $(document).ready( function () {
                 minlength: jQuery.validator.format('At least {0} characters required!')
             }
         },
-        errorClass: 'is-invalid text-danger',
+        errorClass: 'border-red-500 text-xs italic text-red-500',
         submitHandler: function(form) {
             form.submit();
         }
@@ -69,10 +69,7 @@ $(document).ready( function () {
             { data: 'Username'},
             { data: 'Firstname'},
             { data: 'LastName'},
-            { data: 'Birthday'},
             { data: 'Course'},
-            { data: 'Email'},
-            { data: 'Username'},
             { data: 'Studentid',
                 fnCreatedCell: function (td, Studentid) {
                     $(td).html('<div class="text-right"><a href="update.php?Studentid='+Studentid+'" title="Edit this record">Update</a> | <a href="delete.php?Studentid='+Studentid+'" class="text-danger" title="Delete this record" onClick="return confirm(\'Are you sure you want to delete this record?\');">Delete</a></div>');
@@ -84,11 +81,6 @@ $(document).ready( function () {
             orderable: false
         }]
     });
-
-    // $('.form').validate({
-    //     clearInput()
-    
-    // });
 
     $('.form').validate({
         rules: {
@@ -128,7 +120,7 @@ $(document).ready( function () {
                 minlength: jQuery.validator.format('At least {0} characters required!')
             }
         },
-        errorClass: 'is-invalid text-danger',
+        errorClass: 'border-red-500 text-xs italic text-red-500',
         submitHandler: function(form) {
             form.submit();
         }
