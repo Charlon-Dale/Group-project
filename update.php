@@ -16,10 +16,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Update User</title>
-    <?php include('theme/header-scripts.php'); ?>
+    <?php include('components/header-scripts.php'); ?>
 </head>
 <body>
-    <?php include('theme/header.php'); ?>
+    <?php include('components/header.php'); ?>
     <div class="container-fluid">
         <?php if ($user != false) : ?>
             <h1><em class="fa fa-pen-square"></em> Update</h1>
@@ -45,6 +45,6 @@
             <h1>User is not set. Try again.</h1>
         <?php endif; ?> 
     </div>
-    <?php include('theme/footer-scripts.php'); ?>
+    <?php include('components/footer-scripts.php'); ?>
 </body>
 </html>

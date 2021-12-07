@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>JUAN IT Dashboard</title>
-    <?php include('theme/header-scripts.php'); ?>
+    <?php include('components/header-scripts.php'); ?>
 </head>
 <body>
 <style>
@@ -136,7 +136,7 @@
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
       <!-- Header -->
-      <?php include('theme/header.php'); ?>
+      <?php include('components/header.php'); ?>
       <!-- ./Header -->
     
       <!-- Sidebar -->
