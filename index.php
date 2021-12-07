@@ -136,7 +136,7 @@
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
       <!-- Header -->
-      <?php include('components/header.php'); ?>
+      <?php include('components/header-admin.php'); ?>
       <!-- ./Header -->
     
       <!-- Sidebar -->

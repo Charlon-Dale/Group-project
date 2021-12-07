@@ -75,7 +75,7 @@ function doLoginAdmin($Username = NULL, $Password = NULL) {
 function doLogout(){
     unset($_SESSION['user']);
     $_SESSION['message'] = array('type'=>'green', 'msg'=>'Logged out successfully');
-    header('Location:login.php');
+    header('Location:student-login.php');
     exit();
 }
 
@@ -102,6 +102,18 @@ function selectSingleUser($Studentid = NULL) {
     global $mysqli;
     $stmt = $mysqli->prepare('SELECT * FROM users WHERE Studentid = ?');
     $stmt->bind_param('i', $Studentid);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $row = $result->fetch_assoc();
+    $stmt->close();
+    return $row;
+}
+
+/* select admin statement */
+function selectSingleAdminUser($id = NULL) {
+    global $mysqli;
+    $stmt = $mysqli->prepare('SELECT * FROM administrator WHERE id = ?');
+    $stmt->bind_param('i', $id);
     $stmt->execute();
     $result = $stmt->get_result();
     $row = $result->fetch_assoc();
@@ -137,7 +149,7 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
             header('Location:index.php');
         else:
             $_SESSION['message'] = array('type'=>'green', 'msg'=>'User created successfully, you may log in here');
-            header('Location:login.php');
+            header('Location:student-login.php');
         endif;
         exit();
     endif;
