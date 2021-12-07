@@ -86,7 +86,7 @@
             <div class="flex justify-center items-center">
               <div class="w-full lg:w-7/12 bg-white dark:bg-gray-800 p-5 rounded-lg lg:rounded">
                 <?php if ($user != false) : ?>
-			    	      <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">Update Student Account!</h3>
+			    	      <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">View Student Account!</h3>
 			    	      <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded form" method="post">
                     <input type="hidden" name="Studentid" value="<?php echo $user['Studentid']; ?>">
 			    	      	<div class="mb-4 md:flex md:justify-between">
@@ -99,6 +99,7 @@
 			    	      				id="firstname"
                           name="firstname"
 			    	      				type="text"
+                          readonly
                           value="<?php echo $user['Firstname']; ?>"
 			    	      				placeholder="First Name"
 			    	      			/>
@@ -112,6 +113,7 @@
 			    	      				id="lastname"
 			    	      				name="lastname"
 			    	      				type="text"
+                          readonly
                           value="<?php echo $user['LastName']; ?>"
 			    	      				placeholder="Last Name"
 			    	      			/>
@@ -126,6 +128,7 @@
 			    	      				class="w-full px-3 py-2 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
 			    	      				id="birthday"
                           name="birthday"
+                          readonly
                           value="<?php echo $user['Birthday']; ?>"
 			    	      				type="date"	
 			    	      			/>
@@ -139,6 +142,7 @@
 			    	      				id="email"
 			    	      				name="email"
 			    	      				type="email"
+                          readonly
                           value="<?php echo $user['Email']; ?>"
 			    	      				placeholder="Email"
 			    	      			/>
@@ -153,6 +157,7 @@
 			    	      			id="course"
 			    	      			name="course"
 			    	      			type="text"
+                        readonly
                         value="<?php echo $user['Course']; ?>"
 			    	      			placeholder="Course"
 			    	      		/>
@@ -166,22 +171,22 @@
 			    	      			id="username"
 			    	      			name="username"
 			    	      			type="text"
+                        readonly
                         value="<?php echo $user['Username']; ?>"
 			    	      			placeholder="Username"
 			    	      		/>
 			    	      	</div>
-			    	      	<div class="mb-6 text-center">
-			    	      		<button
+                    <div class="mb-6 text-center">
+			    	      		<a
 			    	      			class="w-full px-4 py-2 font-bold text-white bg-blue-500 dark:bg-gray-900 rounded-full hover:bg-blue-700 dark:hover:bg-gray-600 focus:outline-none focus:shadow-outline"
-			    	      			type="submit"
-                        name="btnUpdateUser"
+			    	      			href="index.php"
 			    	      		>
-			    	      			Update Student
-			    	      		</button>
+                        Go back to Dashboard
+                      </a>
 			    	      	</div>
 			    	      </form>
                 <?php else: ?>  
-                    <h1>User is not set. Try again.</h1>
+                    <h1>User not found</h1>
                 <?php endif; ?> 
 			        </div>
             </div>
