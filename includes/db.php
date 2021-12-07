@@ -15,7 +15,6 @@
 	    Email VARCHAR(255)NOT NULL,
 	    Username VARCHAR(30)NOT NULL,
         Password VARCHAR(255)NOT NULL,
-        active INT(11) NOT NULL DEFAULT '0',
         level INT(11) NOT NULL DEFAULT '0',
         PRIMARY KEY(id)
         )";
@@ -46,8 +45,7 @@
             Email,
             Username,
             Password,
-            active,
-            level) VALUES ('Admin','Jimenez', '2000-01-01', 'admin@gmail.com', 'admin', '".$adminPassword."', '1', '1')";
+            level) VALUES ('Admin','Jimenez', '2000-01-01', 'admin@gmail.com', 'admin', '".$adminPassword."', '1')";
             
 	    $mysqli->query($createAdminAccount);  //this line insert values into the table aministrator 
         echo "
