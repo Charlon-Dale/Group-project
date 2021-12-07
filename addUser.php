@@ -220,6 +220,7 @@
 			    	    				id="firstName"
                         name="firstname"
 			    	    				type="text"
+                        x-text="input"
 			    	    				placeholder="First Name"
 			    	    			/>
 			    	    		</div>
@@ -308,13 +309,10 @@
 			    	    	  	</button>
 			    	    	  </div>
                     <div class="w-full sm:w-1/2 sm:pl-2">
-			    	    	  	<button
+			    	    	  	<input 
 			    	    	  		class="w-full px-4 py-2 font-bold text-white bg-red-500 dark:bg-red-900 rounded-full hover:bg-red-700 dark:hover:bg-red-600 focus:outline-none focus:shadow-outline"
-			    	    	  		type="submit"
-                        name="btnInsert"
+                        type="reset" value="Clear"
 			    	    	  	>
-			    	    	  		Clear
-			    	    	  	</button>
 			    	    	  </div>
                   </div>
 			    	    </form>
