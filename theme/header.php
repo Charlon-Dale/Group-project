@@ -6,7 +6,7 @@
 ?>
 <?php
     $loggedInUser = selectSingleUser($_SESSION['user']['Studentid']);
-    $welcome = 'Welcome, '.$loggedInUser['Firstname']. ' '.$loggedInUser['LastName'].' (<a href="logout.php">Logout</a>)';
+    $welcome = ''.$loggedInUser['Firstname'].'  '.$loggedInUser['LastName'].' Connected Successfully (<a href="logout.php">Logout</a>)';
 ?>
 <?php if(isset($_SESSION['message'])): ?>
     <div class="alert alert-<?php echo $_SESSION['message']['type']; ?>" role="alert">

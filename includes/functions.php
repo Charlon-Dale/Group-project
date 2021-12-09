@@ -39,12 +39,16 @@ function doLogin($Username = NULL, $Password = NULL) {
     else:
         $row = $result->fetch_assoc();
         if(password_verify($Password, $row['Password'])):
+            $_SESSION['message'] = array('type'=>'success', 'msg'=> $_SESSION['Firstname']. 'logged in successfully');
+            
             $_SESSION['user'] = $row;
-            $_SESSION['message'] = array('type'=>'success', 'msg'=>'Successfully logged in');
             header('Location:index.php');
+            
         else:
             $_SESSION['message'] = array('type'=>'danger', 'msg'=>'Your username or password is incorrect. Please try again.');
+            
         endif;
+        
     endif;
     $stmt->close();
 }
@@ -91,7 +95,6 @@ function selectSingleUser($Studentid = NULL) {
 function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Course = NULL, $Email = NULL, $Username = NULL, $Password = NULL) {
     global $mysqli;
     $stmt = $mysqli->prepare('SELECT * FROM users WHERE Username = ?');
-
     $stmt->bind_param('s', $Username);
     $stmt->execute();
     $result = $stmt->get_result();

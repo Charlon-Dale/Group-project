@@ -3,6 +3,7 @@
 	if($mysqli->connect_error > 0){
         die('Unable to connect to database [' . $mysqli->connect_error . ']');  
     }
+
     $mysqli->query("CREATE DATABASE IF NOT EXISTS `StudentAccount`");
     mysqli_select_db($mysqli,"StudentAccount");
  
@@ -28,9 +29,9 @@
                 Course, 
                 Email, 
                 Username, 
-                Password) VALUES('Jhon', 'Doe', '2011-11-08', 'CEIT-37-501P', 'jhon@testmail.com', 'jhondoe', '123')";
+                Password) VALUES('Jhon', 'Doe', '2011-11-08', 'BSIT', 'jhon@testmail.com', 'jhondoe', '12345678910')";
             $mysqli->query($enter);
-            echo "Database automatically created with dummy data";
+            echo "(Dummy) Table created successfully";
         }
 	 	
 ?>
