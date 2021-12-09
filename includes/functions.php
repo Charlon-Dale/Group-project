@@ -41,7 +41,7 @@ function doLogin($Username = NULL, $Password = NULL) {
         if(password_verify($Password, $row['Password'])):
             $_SESSION['user'] = $row;
             $_SESSION['message'] = array('type'=>'green', 'msg'=>'Successfully logged in');
-            header('Location:index.php');
+            header('Location:student-index.php');
         else:
             $_SESSION['message'] = array('type'=>'red', 'msg'=>'Your username or password is incorrect. Please try again');
         endif;

@@ -1,7 +1,7 @@
 <?php
     include('includes/functions.php');
     $listAllStudents = selectAllStudents();
-    $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
+    $user =  selectSingleAdminUser($_SESSION['user']['id']);
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +14,7 @@
     <?php include('components/header-scripts.php'); ?>
 </head>
 <body>
+
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
       <!-- Header -->
@@ -50,7 +51,7 @@
               </div>
             </li>
             <li>
-              <a href="admin-profile.php" class="relative flex flex-row items-center h-11 focus:outline-none hover:bg-blue-800 dark:hover:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent hover:border-blue-500 dark:hover:border-gray-800 pr-6">
+              <a href="#" class="relative flex flex-row items-center h-11 focus:outline-none bg-blue-800 dark:bg-gray-600 text-white-600 hover:text-white-800 border-l-4 border-transparent border-blue-500 dark:border-gray-900 pr-6">
                 <span class="inline-flex justify-center items-center ml-4">
                   <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                 </span>
@@ -80,15 +81,14 @@
         </div>
         <!-- ./Statistics Cards -->
     
-        <!-- Update Student -->
+        <!-- Update admin -->
         <div class="mt-4 mx-4">
           <div class="w-full overflow-hidden rounded-lg shadow-xs">
             <div class="flex justify-center items-center">
               <div class="w-full lg:w-7/12 bg-white dark:bg-gray-800 p-5 rounded-lg lg:rounded">
-                <?php if ($user != false) : ?>
-			    	      <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">View Student Account!</h3>
-			    	      <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded form" method="post">
-                    <input type="hidden" name="Studentid" value="<?php echo $user['Studentid']; ?>">
+			    	      <h3 class="pt-4 text-2xl text-center text-gray-600 dark:text-gray-400">My Profile Account</h3>
+			    	      <form class="px-8 pt-6 pb-8 mb-4 bg-white dark:bg-gray-800 rounded form">
+                    <input type="hidden" name="Studentid" value="<?php echo $user['id']; ?>">
 			    	      	<div class="mb-4 md:flex md:justify-between">
 			    	      		<div class="w-full sm:w-1/2 sm:pr-2 mb-3 sm:mb-0">
 			    	      			<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="firstName">
@@ -149,20 +149,6 @@
 			    	      		</div>
 			    	      	</div>
                     <div class="mb-4">
-			    	      		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="course">
-                       Course
-			    	      		</label>
-			    	      		<input
-			    	      			class="w-full px-3 py-2 mb-3 text-sm leading-tight text-gray-600 border rounded focus:outline-none focus:ring-2 focus:ring-blue-600 dark:focus:ring-gray-600 focus:border-transparent"
-			    	      			id="course"
-			    	      			name="course"
-			    	      			type="text"
-                        readonly
-                        value="<?php echo $user['Course']; ?>"
-			    	      			placeholder="Course"
-			    	      		/>
-			    	      	</div>
-                    <div class="mb-4">
 			    	      		<label class="block mb-2 text-sm font-bold text-gray-600 dark:text-gray-400" for="username">
 			    	      			Username
 			    	      		</label>
@@ -176,7 +162,7 @@
 			    	      			placeholder="Username"
 			    	      		/>
 			    	      	</div>
-                    <div class="mb-6 text-center">
+			    	      	<div class="mb-6 text-center">
 			    	      		<a
 			    	      			class="w-full px-4 py-2 font-bold text-white bg-blue-500 dark:bg-gray-900 rounded-full hover:bg-blue-700 dark:hover:bg-gray-600 focus:outline-none focus:shadow-outline"
 			    	      			href="index.php"
@@ -185,9 +171,6 @@
                       </a>
 			    	      	</div>
 			    	      </form>
-                <?php else: ?>  
-                    <h1>User not found</h1>
-                <?php endif; ?> 
 			        </div>
             </div>
           </div>
@@ -195,7 +178,7 @@
         <!-- ./Add Student -->
       </div>
     </div>
-  </div>    
+  </div>
   <?php include('components/footer-scripts.php'); ?>  
 </body>
 </html>
