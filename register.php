@@ -139,7 +139,7 @@
 						<div class="text-center">
 							<a
 								class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800"
-								href="login.php"
+								href="student-login.php"
 							>
 								Already have an account? Login!
 							</a>
