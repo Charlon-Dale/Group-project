@@ -8,9 +8,6 @@
     $loggedInUser = selectSingleAdminUser($_SESSION['user']['id']);
     $welcome = $loggedInUser['Firstname']. ' '.$loggedInUser['LastName'];
 ?>
-<!-- alert -->
-<?php include('components/modal-alert.php'); ?>
-<!-- ./alert -->
 
 <div class="fixed w-full flex items-center justify-between h-14 text-white z-10">
   <div class="flex items-center justify-start md:justify-center pl-3 w-14 md:w-64 h-14 bg-blue-800 dark:bg-gray-800 border-none">
