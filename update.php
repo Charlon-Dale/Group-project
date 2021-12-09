@@ -200,7 +200,7 @@
         <!-- ./Add Student -->
       </div>
     </div>
-  </div>    
+  </div>
   <?php include('components/footer-scripts.php'); ?>  
 </body>
 </html>
