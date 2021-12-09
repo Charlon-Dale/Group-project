@@ -51,7 +51,7 @@
         echo "
             <div class='w-full py-3  px-10'>
                 <div class='alert py-3 px-5 mb-4 bg-green-100 text-green-900 text-sm rounded-md border border-green-200' role='alert'>
-                   <strong>Database automatically created with dummy data</strong>
+                   <strong>(Dummy) Table created successfully</strong>
                 </div>
             </div>
         ";
