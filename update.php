@@ -11,7 +11,7 @@
       $Studentid = $_POST['Studentid'];
       updateUser($username, $firstname, $LastName,$Birthday,$Course,$Email, $Studentid);
     endif;
-    $user = (isset($_GET['Studentid'])) ? selectSingleAdminUser($_GET['Studentid']) : false;
+    $user = (isset($_GET['Studentid'])) ? selectSingleUser($_GET['Studentid']) : false;
 ?>
 
 <!DOCTYPE html>
