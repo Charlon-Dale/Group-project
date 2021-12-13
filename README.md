@@ -15,11 +15,17 @@
 
 -----------------------------------------------------------------------------------------
 Created User Login
+
 1.Login as User if user is using the website. 
+
 2.If no student account was created, register an account.
+
 3.If account created successfully, the student will go to the dashboard.
+
 4.User can use the to-do feature.
+
 5.User can view his/her profile.
+
 6.User can log-out.
 
 -----------------------------------------------------------------------------------------
