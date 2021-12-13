@@ -146,7 +146,6 @@ function createUser($Firstname = NULL, $LastName = NULL, $Birthday = NULL, $Cour
         $stmt->close();
         if(isset($_SESSION['user'])) :
             $_SESSION['message'] = array('type'=>'green', 'msg'=>'User saved successfully');
-            header('Location:index.php');
         else:
             $_SESSION['message'] = array('type'=>'green', 'msg'=>'User created successfully, you may log in here');
             header('Location:student-login.php');
