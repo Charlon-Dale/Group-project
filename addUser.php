@@ -24,9 +24,6 @@
     <?php include('components/header-scripts.php'); ?>
 </head>
 <body>
-<!-- alert -->
-<?php include('components/modal-alert.php'); ?>
-<!-- ./alert -->
 <div x-data="setup()" :class="{ 'dark': isDark }">
     <div class="min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-200 dark:bg-gray-700 text-black dark:text-white">
       <!-- Header -->
