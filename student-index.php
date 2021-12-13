@@ -109,7 +109,7 @@
     </div>
   </div>
   <script>
-   let state = {
+    let state = {
     show_todo: true,
     todos: [
       {id: 1, text: 'Learn JavaScript', todo: true},
