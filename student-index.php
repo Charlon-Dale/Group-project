@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>JUAN IT Dashboard</title>
+    <title>JUAN IT Student Dashboard</title>
     <?php include('components/header-scripts.php'); ?>
 </head>
 <body  x-data="{'isModalOpen': false}" x-on:keydown.escape="isModalOpen=false">
@@ -55,79 +55,67 @@
       <!-- ./Sidebar -->
     
       <div class="h-full ml-14 mt-14 mb-10 md:ml-64">
-        <!-- Statistics Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
-          <div class="bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group">
-            <div class="flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12">
-              <svg width="30" height="30" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="stroke-current text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+        <div class='container mt-16 mx-auto lg:w-2/5 md:w-1/2 sm:w-7/8 bg-white shadow-lg rounded-lg'>
+          <div class='p-6'>
+            <h1 class='text-2xl text-center'>Your Todo</h1>
+            <div class="border-t border-gray-100 my-2"></div>
+              <div x-data="state">  
+                <div class='mb-4'>
+                    <div class="hidden sm:block">
+                        <div class="border-b border-gray-200">
+                            <nav class="-mb-px flex">
+                                <a href="#"
+                                    :class=" show_todo ? 'w-1/2 py-4 px-1 text-center border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700' : 'w-1/2 py-4 px-1 text-center border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'"
+                                    @click.prevent="show_todo = true">
+                                    Todo
+                                </a>
+                                <a href="#"
+                                    :class=" !show_todo ? 'w-1/2 py-4 px-1 text-center border-b-2 border-indigo-500 font-medium text-sm leading-5 text-indigo-600 focus:outline-none focus:text-indigo-800 focus:border-indigo-700' : 'w-1/2 py-4 px-1 text-center border-b-2 border-transparent font-medium text-sm leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300'"
+                                    @click.prevent="show_todo = false">
+                                    Done
+                                </a>
+
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <template x-for="todo in todos" :key="todo.id">
+                    <div x-show="todo.todo === show_todo" class='transform transition origin-top'>
+                        <div class=" flex items-center">
+                            <input :id=" todo.id" type="checkbox"
+                                class="form-checkbox h-4 w-4 text-indigo-600 transition duration-150 ease-in-out"
+                                :checked="!todo.todo" @click="setTimeout(function() {todo.todo = !todo.todo}, 1000)" />
+                            <label :for="todo.id" class="ml-2 block text-md leading-6 text-gray-900">
+                                <span x-text="todo.text"></span>
+                            </label>
+                        </div>
+
+                    </div>
+                </template>
+
+                <div x-show="show_todo" class='mt-4'>
+                    <label for="add_todo" class="ml-2 block text-sm leading-5 text-gray-900">Add a todo:</label>
+                    <input type="text" id="add_todo" class='form-input'
+                        @keyup.enter="todos.push({id: (+ new Date()), text: $event.target.value, todo: true});">
+                </div>
+              </div>
             </div>
-            <div class="text-right">
-              <?php
-                echo'<p class="text-2xl">'.count($listAllStudents).'</p>';
-              ?>
-              <p>Students</p>
-            </div>
-          </div>
         </div>
-        <!-- ./Statistics Cards -->
-    
-        <!-- Student Table -->
-        <div class="mt-4 mx-4">
-          <div class="w-full overflow-hidden rounded-lg shadow-xs">
-            <div class="w-full overflow-x-auto">
-              <table class="w-full">
-                <thead>
-                  <tr class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
-                    <th class="px-4 py-3">Student ID</th>
-                    <th class="px-4 py-3">Student</th>
-                    <th class="px-4 py-3">Username</th>
-                    <th class="px-4 py-3 text-center">Actions</th>
-                  </tr>
-                </thead>
-                <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
-                  <?php
-                    foreach ($listAllStudents as $student):
-                      echo'
-                        <tr class="bg-gray-50 dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-900 text-gray-700 dark:text-gray-400">
-                          <td class="px-4 py-3 text-xs">
-                            <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full dark:bg-green-700 dark:text-green-100">
-                              '.$student['Studentid'].'
-                            </span>
-                          </td>
-                          <td class="px-4 py-3">
-                            <div class="flex items-center text-sm">
-                              <div class="relative hidden w-8 h-8 mr-3 rounded-full md:block">
-                                <img class="object-cover w-full h-full rounded-full" src="https://therminic2018.eu/wp-content/uploads/2018/07/dummy-avatar.jpg" alt="" loading="lazy" />
-                                <div class="absolute inset-0 rounded-full shadow-inner" aria-hidden="true"></div>
-                              </div>
-                              <div>
-                                <p class="font-semibold">'.$student['Firstname'].' '.$student['LastName'].'</p>
-                                <p class="text-xs text-gray-600 dark:text-gray-400">'.$student['Course'].'</p>
-                              </div>
-                            </div>
-                          </td>
-                          <td class="px-4 py-3 text-sm">'.$student['Username'].'</td>
-                          <td class="px-4 py-3 text-sm text-center">
-                            <a class="inline-block text-sm text-green-500 align-baseline hover:text-green-800" href ="update.php?Studentid='.$student['Studentid'].'" title="view this record" >View</a> |
-                            <a class="inline-block text-sm text-blue-500 align-baseline hover:text-blue-800" href ="update.php?Studentid='.$student['Studentid'].'" title="Update this record" >Update</a> |
-                            <a href ="delete.php?Studentid='.$student['Studentid'].'" class="inline-block text-sm text-red-500 align-baseline hover:text-red-800" title="Delete this record" x-on:click="isModalOpen = true">Delete</a>
-                          </td>
-                        </tr>
-                      ';  
-                    endforeach;  
-                  ?> 
-                </tbody>
-              </table>
-            </div>
-            <div class="grid px-4 py-3 text-xs font-semibold tracking-wide text-gray-500 uppercase border-t dark:border-gray-700 bg-gray-50 sm:grid-cols-9 dark:text-gray-400 dark:bg-gray-800">
-              <span class="flex items-center col-span-3"> Created by Juan IT Group </span>
-            </div>
-          </div>
-        </div>
-        <!-- ./Student Table -->
-      </div>
+      </div>  
     </div>
   </div>
+  <script>
+   let state = {
+    show_todo: true,
+    todos: [
+      {id: 1, text: 'Learn JavaScript', todo: true},
+      {id: 2, text: 'Learn Vue', todo: true},
+      {id: 3, text: 'Build something awesome', todo: true}
+    ]
+       
+   }
+  </script>
   <?php include('components/footer-scripts.php'); ?>  
 </body>
 </html>
