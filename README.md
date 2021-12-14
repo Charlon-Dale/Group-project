@@ -6,7 +6,7 @@
 
 - [x] [Jheave Jimenez](https://github.com/jheavejimenez)
 ![image](https://user-images.githubusercontent.com/72959843/145826958-721c9615-2e4d-4617-b61e-759be325c232.png)
-- [x] [Matt Ishizawa] (https://www.facebook.com/mattflorence.ishizawa)
+- [x] [Matt Ishizawa](https://www.facebook.com/mattflorence.ishizawa)
 ![image](https://user-images.githubusercontent.com/72959843/145827195-54c0cc6a-9ec3-4fff-9fb0-b639d2bfa314.png)
 - [x] [Renzo Florendo](https://www.facebook.com/groundrenzo)
 ![image](https://user-images.githubusercontent.com/72959843/145827357-b638eb2e-e2ac-4287-9600-734ce7a850ec.png)
